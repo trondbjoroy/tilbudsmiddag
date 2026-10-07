@@ -242,9 +242,8 @@ function renderPlan() {
     return;
   }
   $('#plan').innerHTML = plan.map((entries, d) => {
-    const date = new Date(w.start + d * DAY_MS).toLocaleDateString('nb-NO', { day: 'numeric', month: 'long' });
     return `<section class="day${d === today ? ' today' : ''}" id="dag-${d}">
-      <h2>${DAYS[d]} <span>${date}${d === today ? ' · i dag' : ''}</span></h2>
+      <h2>${DAYS[d]}${d === today ? ' <span>i dag</span>' : ''}</h2>
       <div class="cards">${entries.map((e, i) => cardHtml(e, d, i)).join('')}</div>
     </section>`;
   }).join('');
