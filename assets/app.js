@@ -370,6 +370,7 @@ function openRecipe(key) {
       </section>
     </div>`;
   $('#dlg').dataset.open = key;
+  window.posthog?.capture('recipe_opened', { recipe: r.id, source: d != null ? 'ukemeny' : 'lenke', portions: state.portions });
   if (!$('#dlg').open) $('#dlg').showModal();
 }
 
@@ -421,7 +422,9 @@ function onClick(ev) {
     state = { ...DEFAULTS, week: state.week, portions: state.portions, perDay: state.perDay };
     update();
   } else if ('copy' in t.dataset) {
-    navigator.clipboard.writeText(shoppingText(entryFor($('#dlg').dataset.open).e)).then(() => {
+    const copied = entryFor($('#dlg').dataset.open).e;
+    window.posthog?.capture('shopping_list_copied', { recipe: copied.recipe.id });
+    navigator.clipboard.writeText(shoppingText(copied)).then(() => {
       t.textContent = 'Kopiert!';
       setTimeout(() => (t.textContent = 'Kopier handleliste'), 2000);
     });

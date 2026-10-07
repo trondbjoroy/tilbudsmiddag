@@ -61,6 +61,7 @@ function page({ title, description, path, body, head = '', noindex = false, imag
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/theme.js"></script>
+  <script src="/assets/analytics.js"></script>
   ${head}
 </head>
 <body>
