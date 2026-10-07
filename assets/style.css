@@ -79,8 +79,9 @@ a { color: inherit; }
 @media (max-width: 900px) { .layout { grid-template-columns: 1fr; gap: 16px; } }
 
 /* Filtre */
-.filters { position: sticky; top: 76px; display: grid; gap: 16px; }
-@media (max-width: 900px) { .filters { position: static; } }
+/* Panelet følger med når du ruller. Er det høyere enn vinduet, får det eget rullefelt. */
+.filters { position: sticky; top: 76px; display: grid; gap: 16px; max-height: calc(100vh - 92px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; border-radius: var(--radius); }
+@media (max-width: 900px) { .filters { position: static; max-height: none; overflow: visible; } }
 .filters details { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
 .filters summary { font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; }
 .filters summary::after { content: "▾"; color: var(--muted); }
