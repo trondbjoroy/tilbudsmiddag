@@ -100,14 +100,6 @@ function buildMatcher(offers) {
   };
 }
 
-function staplePrice(def) {
-  if (!def.staple || !DATA.enhver) return null;
-  const s = DATA.enhver.staples.find((x) => x.title === def.staple);
-  if (!s) return null;
-  const prices = s.prices.filter((p) => !state.chains.length || state.chains.includes(p.chain));
-  return prices.length ? { title: s.title, ...prices[0], all: prices } : null;
-}
-
 function evaluate(recipe, match) {
   const items = recipe.ing.map(([key, qty, unit, note]) => {
     const def = INGREDIENTS[key];
@@ -118,7 +110,6 @@ function evaluate(recipe, match) {
     const unknown = (o) => (need && !isPerKg(o) && !packSize(o) ? 1 : 0);
     it.offers = match(key).map((o) => ({ ...o, est: estimate(o, need) })).sort((a, b) => unknown(a) - unknown(b) || a.est.cost - b.est.cost);
     it.best = it.offers[0] || null;
-    it.staple = it.best ? null : staplePrice(def);
     return it;
   });
   let score = 0, cost = 0, saved = 0, onOffer = 0, mainOnOffer = false;
@@ -132,8 +123,6 @@ function evaluate(recipe, match) {
       saved += it.best.est.saved;
       onOffer++;
       if (it.def.w >= 2) mainOnOffer = true;
-    } else if (it.staple) {
-      cost += it.staple.price;
     }
   }
   if (!mainOnOffer) score *= 0.4; // Middager der hovedråvaren er på tilbud kommer først.
@@ -267,19 +256,29 @@ function adSlot(kind) {
   </aside>`;
 }
 
+// Kjedenes egne sider for tilbudsavisen.
+const FLYER_URLS = {
+  'REMA 1000': 'https://www.rema.no/',
+  KIWI: 'https://kiwi.no/',
+  Extra: 'https://www.coop.no/extra',
+  Obs: 'https://kundeavis.coop.no/',
+  'Coop Prix': 'https://www.coop.no/coop-prix/kundeavis',
+  'Coop Mega': 'https://www.coop.no/coop-mega',
+  MENY: 'https://meny.no/kundeavis/',
+  SPAR: 'https://spar.no/kundeavis/',
+  Joker: 'https://joker.no/kundeavis/',
+  Bunnpris: 'https://www.bunnpris.no/',
+};
+
 function renderFlyers() {
-  const e = DATA.enhver;
   const chains = [...new Set(DATA.catalogs.map((c) => c.chain))];
-  const link = (chain) => e?.flyers.find((f) => f.chain.toLowerCase() === chain.toLowerCase() || (chain === 'Extra' && f.chain === 'Coop Extra') || (chain === 'Obs' && f.chain === 'Coop Obs'))?.url || `https://etilbudsavis.no/${encodeURIComponent(chain.replace(/\s+/g, '-'))}`;
+  const link = (chain) => FLYER_URLS[chain] || '#';
   $('#flyers').innerHTML = chains.sort((a, b) => a.localeCompare(b, 'nb')).map((c) => {
     const cats = DATA.catalogs.filter((x) => x.chain === c);
     const n = cats.reduce((s, x) => s + x.offers, 0);
     const till = Math.max(...cats.map((x) => Date.parse(x.till)));
     return `<a class="flyer" href="${esc(link(c))}" target="_blank" rel="noopener">${chainBadge(c)}<span>${n} tilbud</span><small>til ${shortDate(till)}</small></a>`;
   }).join('');
-  // Bare de to første setningene. Resten forklarer metoden til enhver.no og forvirrer her.
-  const summary = e?.summary?.split(/(?<=[.!?])\s+/).slice(0, 2).join(' ');
-  if (summary) $('#enhver-summary').innerHTML = `<p>${esc(summary)}</p><p class="muted">Kilde: <a href="https://enhver.no/" target="_blank" rel="noopener">enhver.no</a>, uke ${esc(e.week)}</p>`;
 }
 
 // ---------- Oppskrift og handleliste ----------
@@ -350,7 +349,7 @@ function openRecipe(d, i) {
         ${g.byChain.map(([chain, items]) => `<div class="store">
           <h4>${chainBadge(chain)} <span class="muted">${items.length} ${items.length === 1 ? 'vare' : 'varer'} · ca. ${kr(Math.round(items.reduce((s, it) => s + it.best.est.cost, 0)))}</span></h4>
           <ul>${items.map((it) => item(it, offerLine(it.best) + others(it))).join('')}</ul></div>`).join('')}
-        ${g.notOnOffer.length ? `<div class="store"><h4>Ikke på tilbud denne uken</h4><ul>${g.notOnOffer.map((it) => item(it, it.staple ? `Billigst hos ${chainBadge(it.staple.chain)} ca. ${kr(it.staple.price)} <span class="muted">(${esc(it.staple.title)}, enhver.no)</span>` : '')).join('')}</ul></div>` : ''}
+        ${g.notOnOffer.length ? `<div class="store"><h4>Ikke på tilbud denne uken</h4><ul>${g.notOnOffer.map((it) => item(it, '')).join('')}</ul></div>` : ''}
         ${g.pantry.length ? `<div class="store pantry"><h4>Har du sikkert hjemme</h4><p>${g.pantry.map((it) => esc(it.def.name.toLowerCase())).join(', ')}</p></div>` : ''}
         ${stores.length > 1 ? `<div class="onestore"><h4>Vil du handle alt i én butikk?</h4><table>${stores.map(([c, v]) => `<tr><td>${chainBadge(c)}</td><td>${v.n} av ${e.need} varer på tilbud</td><td class="num">${kr(Math.round(v.sum))}</td></tr>`).join('')}</table></div>` : ''}
         <div class="actions"><button type="button" class="btn" data-copy>Kopier handleliste</button><button type="button" class="btn btn-ghost" data-print>Skriv ut</button></div>
@@ -377,7 +376,7 @@ function shoppingText(e) {
   }
   if (g.notOnOffer.length) {
     lines.push('IKKE PÅ TILBUD');
-    g.notOnOffer.forEach((it) => lines.push(`- ${it.def.name}, ${fmtQty(it.qty, it.unit)}${it.staple ? ` (billigst hos ${it.staple.chain})` : ''}`));
+    g.notOnOffer.forEach((it) => lines.push(`- ${it.def.name}, ${fmtQty(it.qty, it.unit)}`));
     lines.push('');
   }
   if (g.pantry.length) lines.push('Har du hjemme: ' + g.pantry.map((it) => it.def.name.toLowerCase()).join(', '));

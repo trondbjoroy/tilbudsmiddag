@@ -1,5 +1,5 @@
-// Henter ukens tilbud fra tilbudsavisene (Tjek / eTilbudsavis) og
-// prissammenligning fra enhver.no. Skriver data/offers.json.
+// Henter ukens tilbud fra tilbudsavisene (Tjek / eTilbudsavis). Skriver data/offers.json.
+// NB: Tjek-API-et krever avtale med Tjek. Ikke kjør skriptet før avtalen er på plass.
 // Kjør: node scripts/update-data.mjs
 import { writeFile, mkdir } from 'node:fs/promises';
 
@@ -19,9 +19,6 @@ const CHAINS = {
   b3e8Fm: 'Joker',
   '5b11sm': 'Bunnpris',
 };
-
-// enhver.no bruker egne kjede-ID-er.
-const ENHVER_BRANDS = { 1: 'KIWI', 3: 'MENY', 4: 'Obs', 6: 'REMA 1000', 8: 'SPAR', 9: 'Extra', 7: 'Coop Prix', 10: 'Bunnpris' };
 
 async function getJson(url) {
   const res = await fetch(url, { headers: { 'User-Agent': 'tilbudsmiddag.no data-oppdatering' } });
@@ -59,56 +56,9 @@ async function fetchOffers(catalog) {
   }));
 }
 
-// SvelteKit "devalue"-format: en flat liste der objekter peker på indekser.
-function unflatten(values) {
-  const out = new Array(values.length);
-  const h = (i) => {
-    if (i < 0) return undefined;
-    if (i in out) return out[i];
-    const v = values[i];
-    if (!v || typeof v !== 'object') return (out[i] = v);
-    if (Array.isArray(v)) {
-      const a = (out[i] = []);
-      v.forEach((x) => a.push(h(x)));
-      return a;
-    }
-    const o = (out[i] = {});
-    for (const k in v) o[k] = h(v[k]);
-    return o;
-  };
-  return h(0);
-}
-
-async function fetchEnhver() {
-  const j = await getJson('https://enhver.no/comparison/__data.json');
-  const layout = unflatten(j.nodes[1].data);
-  const page = unflatten(j.nodes[2].data);
-  return {
-    week: layout.webSettings?.week ?? null,
-    updatedAt: layout.webSettings?.weekUpdatedAt ?? null,
-    summary: layout.webSettings?.weekSummary ?? null,
-    flyers: layout.adPapers.map((a) => ({ chain: a.title, url: a.url })),
-    // Basisvarer med pris i hver kjede. Brukes når en vare ikke er på tilbud.
-    staples: page.products.map((p) => ({
-      title: p.title,
-      prices: p.prices
-        .map((x) => ({ chain: ENHVER_BRANDS[x.brandId], price: x.price }))
-        .filter((x) => x.chain)
-        .sort((a, b) => a.price - b.price),
-    })),
-  };
-}
-
 const catalogs = await fetchCatalogs();
 const offers = [];
 for (const c of catalogs) offers.push(...(await fetchOffers(c)));
-
-let enhver = null;
-try {
-  enhver = await fetchEnhver();
-} catch (err) {
-  console.warn('enhver.no feilet:', err.message);
-}
 
 await mkdir(new URL('../data/', import.meta.url), { recursive: true });
 await writeFile(
@@ -117,7 +67,6 @@ await writeFile(
     generatedAt: new Date().toISOString(),
     catalogs: catalogs.map((c) => ({ id: c.id, chain: CHAINS[c.dealer_id], label: c.label, from: c.run_from, till: c.run_till, offers: c.offer_count })),
     offers,
-    enhver,
   }),
 );
-console.log(`${catalogs.length} aviser, ${offers.length} tilbud, enhver: ${enhver ? enhver.staples.length + ' basisvarer' : 'mangler'}`);
+console.log(`${catalogs.length} aviser, ${offers.length} tilbud`);

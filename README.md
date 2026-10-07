@@ -4,13 +4,13 @@ Middagsforslag for hver dag i uken, laget av ukens tilbud i dagligvarekjedene. H
 
 ## Slik virker det
 
-- `scripts/update-data.mjs` henter alle tilbud fra tilbudsavisene (Tjek/eTilbudsavis) og prissammenligning fra enhver.no. Skriptet skriver `data/offers.json`.
+- `scripts/update-data.mjs` henter alle tilbud fra tilbudsavisene (Tjek/eTilbudsavis) og skriver `data/offers.json`. Tjek-API-et krever avtale med Tjek. Den automatiske hentingen er slått av til avtalen er på plass.
 - `assets/ingredients.js` kobler hver vare til tilbud med søkemønstre.
 - `assets/recipes.js` har oppskriftene. Mengder gjelder 4 porsjoner.
 - `assets/app.js` gir poeng til oppskriftene etter tilbudene og lager ukeplanen.
 - `api/contact.js` sender kontaktskjemaet på `annonser.html` som e-post via Resend.
 
-GitHub Actions kjører `update-data` kl. 06 og 18 hver dag og committer nye tilbud. Vercel publiserer på nytt ved hver commit.
+GitHub Actions-jobben `update-data` kan kjøres for hånd. Den faste kjøringen kl. 06 og 18 er slått av til avtalen med Tjek er på plass.
 
 ## Lokalt
 
