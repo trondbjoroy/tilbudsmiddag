@@ -1,6 +1,6 @@
-// Lager statiske sider for søkemotorer ut fra oppskriftsbasen:
-// /oppskrift/<navn>/, /oppskrifter/, oppskriftslisten på forsiden,
-// sitemap.xml, robots.txt og 404.html.
+// Lager statiske sider for søkemotorer ut fra oppskriftsbasen og ukens tilbud:
+// /oppskrift/<navn>/, /oppskrifter/, oppskriftslisten på forsiden, temasider
+// (/middagstilbud/, /billig-middag/, /middagstips/ m.fl.), sitemap.xml, robots.txt og 404.html.
 // Kjør etter endringer i oppskriftene: node scripts/build-pages.mjs
 import { existsSync } from 'node:fs';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
@@ -21,6 +21,40 @@ function creditHtml(slug) {
   return 'KI-generert illustrasjon';
 }
 const creditText = (slug) => creditHtml(slug).replace(/<[^>]+>/g, '');
+
+// Ukens tilbud: tilbud som gjelder en gang de neste 7 dagene.
+const DATA = JSON.parse(await readFile(new URL('../data/offers.json', import.meta.url), 'utf8').catch(() => '{"offers":[]}'));
+const NOW = Date.now();
+const ACTIVE = DATA.offers.filter((o) => Date.parse(o.till) > NOW && Date.parse(o.from) < NOW + 7 * 864e5);
+const WEEK_NO = (() => {
+  const t = new Date();
+  const d = new Date(Date.UTC(t.getFullYear(), t.getMonth(), t.getDate()));
+  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+  return Math.ceil(((d - Date.UTC(d.getUTCFullYear(), 0, 1)) / 864e5 + 1) / 7);
+})();
+const perKg = (o) => o.unit === 'kg' && o.size === 1 && !/(^|[^\d,])1 ?kg/i.test(o.description);
+const kr = (n) => (n % 1 ? n.toLocaleString('nb-NO', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : n.toLocaleString('nb-NO')) + ' kr';
+const priceLabel = (o) => kr(o.price) + (perKg(o) ? '/kg' : '');
+function offersFor(key) {
+  const d = INGREDIENTS[key];
+  if (!d?.match) return [];
+  return ACTIVE.filter((o) => d.match.test(o.heading) && !(d.not && d.not.test(o.heading)) && !(d.and && !d.and.test(o.heading))).sort((a, b) => a.price - b.price);
+}
+// Kilopris når pakningen har vekt eller volum, ellers null.
+function kgPrice(o) {
+  if (perKg(o)) return o.price;
+  const f = { g: 1000, ml: 1000, kg: 1, l: 1 }[o.unit];
+  return f && o.size ? (o.price * f) / o.size : null;
+}
+const byKgPrice = (a, b) => (kgPrice(a) ?? Infinity) - (kgPrice(b) ?? Infinity) || a.price - b.price;
+// Billigste tilbud (etter kilopris) på hovedråvaren i en oppskrift, eller null.
+// Hovedråvaren er kjøtt eller fisk (vekt 3) når oppskriften har det, ellers vekt 2 (egg, bønner o.l.).
+function mainDeal(r) {
+  const top = Math.max(...r.ing.map(([k]) => INGREDIENTS[k].w ?? 0));
+  if (top < 2) return null;
+  const deals = r.ing.filter(([k]) => INGREDIENTS[k].w === top).map(([k]) => ({ key: k, offer: [...offersFor(k)].sort(byKgPrice)[0] })).filter((x) => x.offer);
+  return deals.sort((a, b) => byKgPrice(a.offer, b.offer))[0] || null;
+}
 
 const CATS = { kylling: 'Kylling', storfe: 'Kjøttdeig og storfe', svin: 'Svin', lam: 'Lam', fisk: 'Fisk og sjømat', vegetar: 'Vegetar' };
 const CAT_ORDER = Object.keys(CATS);
@@ -94,7 +128,7 @@ ${body}
   <footer class="site-foot">
     <div class="wrap foot-row">
       <p><strong>tilbudsmiddag.no</strong> – middager fra ukens tilbudsaviser.</p>
-      <nav aria-label="Bunnmeny"><a href="/">Ukens middager</a> · <a href="/oppskrifter/">Alle oppskrifter</a> · <a href="/bildekreditering/">Bildekreditering</a></nav>
+      <nav aria-label="Bunnmeny"><a href="/">Ukens middager</a> · <a href="/oppskrifter/">Alle oppskrifter</a> · <a href="/middagstilbud/">Middagstilbud</a> · <a href="/billig-middag/">Billig middag</a> · <a href="/middagstips/">Middagstips</a> · <a href="/bildekreditering/">Bildekreditering</a></nav>
     </div>
   </footer>
 </body>
@@ -109,9 +143,14 @@ const crumbLd = (items) => ({
   itemListElement: items.map(([name, href], i) => ({ '@type': 'ListItem', position: i + 1, name, ...(href ? { item: SITE + href } : {}) })),
 });
 
-function recipeCard(r) {
+function recipeCard(r, note = '') {
   const pic = img(r) ? `<img src="${img(r)}" alt="" width="1024" height="768" loading="lazy" decoding="async">` : '';
-  return `<a class="rcard" href="${url(r)}" data-cat="${r.cat}">${pic}<span class="cat">${esc(CATS[r.cat])}</span><span class="rcard-name">${esc(r.name)}</span><span class="time">${r.time} min</span></a>`;
+  return `<a class="rcard" href="${url(r)}" data-cat="${r.cat}">${pic}<span class="cat">${esc(CATS[r.cat])}</span><span class="rcard-name">${esc(r.name)}</span><span class="time">${r.time} min</span>${note ? `<span class="deal-note">${note}</span>` : ''}</a>`;
+}
+// Kort med tilbudsmerke når hovedråvaren er på tilbud denne uken.
+function dealCard(r) {
+  const d = mainDeal(r);
+  return recipeCard(r, d ? `${esc(INGREDIENTS[d.key].name)} ${priceLabel(d.offer)} hos ${esc(d.offer.chain)}` : '');
 }
 
 function recipePage(r) {
@@ -228,7 +267,105 @@ await writeFile(
   }),
 );
 
-const urls = ['/', '/oppskrifter/', ...RECIPES.map(url)];
+// ---------- Temasider ----------
+const TOPICS = [
+  { slug: 'rask-middag', name: 'Rask middag', h1: 'Rask middag på 25 minutter', title: 'Rask middag – enkle middager på 25 minutter', desc: 'Raske middager som er klare på 25 minutter eller mindre. Med oppskrift og hvor ingrediensene er på tilbud denne uken.', intro: 'Middager som er på bordet på 25 minutter eller mindre. Perfekt for travle hverdager.', filter: (r) => r.time <= 25 },
+  { slug: 'barnevennlig-middag', name: 'Barnevennlig middag', h1: 'Barnevennlig middag', title: 'Barnevennlig middag – middager hele familien liker', desc: 'Barnevennlige middager som hele familien liker. Enkle oppskrifter med ingredienser på tilbud denne uken.', intro: 'Trygge favoritter som barn liker, fra taco og pizza til fiskekaker og kjøttboller.', filter: (r) => r.tags.includes('barn') },
+  { slug: 'vegetarmiddag', name: 'Vegetarmiddag', h1: 'Vegetarmiddag', title: 'Vegetarmiddag – enkle vegetaroppskrifter', desc: 'Enkle vegetarmiddager med bønner, linser, egg og grønnsaker. Se hvor ingrediensene er billigst denne uken.', intro: 'Middager uten kjøtt og fisk. Mettende, rimelige og raske å lage.', filter: (r) => r.cat === 'vegetar' },
+  { slug: 'fiskemiddag', name: 'Fiskemiddag', h1: 'Fiskemiddag', title: 'Fiskemiddag – oppskrifter med laks, torsk og sei', desc: 'Fiskemiddager med laks, torsk, sei, ørret og reker. Oppskrifter og ukens tilbud på fisk.', intro: 'Laks, torsk, sei, ørret og sjømat. Fisk er ofte på tilbud, og passer godt to dager i uken.', filter: (r) => r.cat === 'fisk' },
+  { slug: 'kyllingmiddag', name: 'Kyllingmiddag', h1: 'Kyllingmiddag', title: 'Kyllingmiddag – enkle oppskrifter med kylling', desc: 'Enkle middager med kyllingfilet, lårfilet og hel kylling. Oppskrifter og ukens tilbud på kylling.', intro: 'Kylling er en av varene som oftest er på tilbud. Her er middagene som passer.', filter: (r) => r.cat === 'kylling' },
+  { slug: 'fredagsmiddag', name: 'Fredagsmiddag', h1: 'Fredagsmiddag og fredagskos', title: 'Fredagsmiddag – taco, pizza og burger', desc: 'Fredagsmiddag med taco, pizza, burger og annen kosemat. Oppskrifter og ukens tilbud på ingrediensene.', intro: 'Taco, hjemmelaget pizza, burgere og annen kosemat til fredagen.', filter: (r) => r.tags.includes('fredag') },
+];
+const topicChips = `<nav class="chips topic-chips" aria-label="Temaer">${[['middagstilbud', 'Middagstilbud'], ['billig-middag', 'Billig middag'], ['middagstips', 'Middagstips'], ...TOPICS.map((t) => [t.slug, t.name])].map(([s, n]) => `<a class="chip" href="/${s}/">${esc(n)}</a>`).join('')}</nav>`;
+const weekNote = ACTIVE.length ? `Tilbudene gjelder uke ${WEEK_NO}, hentet fra tilbudsavisene til ${new Set(ACTIVE.map((o) => o.chain)).size} dagligvarekjeder.` : 'Ukens tilbud er ikke klare ennå. Oppskriftene vises likevel.';
+
+async function writePage(path, html) {
+  await mkdir(new URL(`.${path}`, ROOT), { recursive: true });
+  await writeFile(new URL(`.${path}index.html`, ROOT), html);
+}
+function listPage({ path, name, title, desc, body, list }) {
+  const trail = [['Forside', '/'], [name]];
+  const ld = list?.length ? jsonLd({ '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: list.map((r, i) => ({ '@type': 'ListItem', position: i + 1, url: SITE + url(r) })) }) : '';
+  return page({ title: `${title} | Tilbudsmiddag`, description: desc, path, body: `${crumbs(trail)}\n${body}`, head: ld + jsonLd(crumbLd(trail)) });
+}
+
+for (const t of TOPICS) {
+  const list = RECIPES.filter(t.filter).sort((a, b) => (mainDeal(a) ? 0 : 1) - (mainDeal(b) ? 0 : 1) || a.name.localeCompare(b.name, 'nb'));
+  const onDeal = list.filter(mainDeal).length;
+  await writePage(`/${t.slug}/`, listPage({
+    path: `/${t.slug}/`, name: t.name, title: t.title, desc: t.desc, list,
+    body: `    <section class="intro"><h1>${esc(t.h1)}</h1><p class="lead">${esc(t.intro)} ${list.length} oppskrifter, ${onDeal} av dem med hovedråvaren på tilbud denne uken.</p>${topicChips}</section>
+    <section class="rsection"><div class="rcards">${list.map(dealCard).join('')}</div><p class="muted fine-note">${esc(weekNote)}</p></section>`,
+  }));
+}
+
+// /middagstilbud/: ukens middagsvarer på tilbud.
+{
+  const keys = Object.keys(INGREDIENTS).filter((k) => INGREDIENTS[k].w >= 2 && offersFor(k).length).sort((a, b) => INGREDIENTS[a].name.localeCompare(INGREDIENTS[b].name, 'nb'));
+  const sections = keys.map((k) => {
+    const offers = [...new Map(offersFor(k).map((o) => [o.chain, o])).values()].slice(0, 4);
+    const recipes = RECIPES.filter((r) => r.ing.some(([key]) => key === k));
+    return `<section class="deal-block"><h2>${esc(INGREDIENTS[k].name)} på tilbud</h2>
+      <ul class="deal-list">${offers.map((o) => `<li><b>${priceLabel(o)}</b> hos ${esc(o.chain)} <span class="muted">– ${esc(o.heading.charAt(0) + o.heading.slice(1).toLowerCase())}${o.prePrice && o.prePrice > o.price ? `, før ${kr(o.prePrice)}` : ''}</span></li>`).join('')}</ul>
+      ${recipes.length ? `<p class="deal-recipes">Middager med ${esc(INGREDIENTS[k].name.toLowerCase())}: ${recipes.map((r) => `<a href="${url(r)}">${esc(r.name)}</a>`).join(', ')}</p>` : ''}</section>`;
+  }).join('\n    ');
+  await writePage('/middagstilbud/', listPage({
+    path: '/middagstilbud/', name: 'Middagstilbud', title: `Middagstilbud uke ${WEEK_NO} – ukens beste tilbud til middag`,
+    desc: 'Ukens middagstilbud: kjøtt, kylling, fisk og andre middagsvarer på tilbud hos REMA 1000, KIWI, Extra, Coop, MENY, SPAR, Joker og Bunnpris, med oppskrifter.',
+    body: `    <section class="intro"><h1>Middagstilbud denne uken</h1><p class="lead">Her er ukens tilbud på middagsvarer, samlet fra tilbudsavisene. Under hver vare finner du middager du kan lage med den. ${esc(weekNote)}</p>${topicChips}</section>
+    ${sections || '<p class="lead">Ukens tilbud er ikke klare ennå. Se <a href="/oppskrifter/">alle oppskriftene</a>.</p>'}
+    <p><a class="btn" href="/#ukemeny">Se hele ukemenyen →</a></p>`,
+  }));
+}
+
+// /billig-middag/: middager der hovedråvaren er billigst på tilbud.
+{
+  const list = RECIPES.filter(mainDeal).sort((a, b) => byKgPrice(mainDeal(a).offer, mainDeal(b).offer)).slice(0, 18);
+  await writePage('/billig-middag/', listPage({
+    path: '/billig-middag/', name: 'Billig middag', title: `Billig middag – ukens billigste middager (uke ${WEEK_NO})`,
+    desc: 'Billig middag denne uken: middager der hovedråvaren er på tilbud. Enkle oppskrifter og handleliste som viser hvor varene er billigst.',
+    list,
+    body: `    <section class="intro"><h1>Billig middag denne uken</h1><p class="lead">Middagene der kjøttet, fisken eller hovedråvaren er billigst på tilbud akkurat nå. Rangert etter kiloprisen på hovedråvaren. ${esc(weekNote)}</p>${topicChips}</section>
+    <section class="rsection"><div class="rcards">${list.map(dealCard).join('') || '<p>Ukens tilbud er ikke klare ennå.</p>'}</div></section>
+    <section class="tips"><h2>Slik lager du billig middag</h2><ul>
+      <li><b>Planlegg ut fra tilbudene.</b> Velg middager der kjøttet eller fisken er på tilbud. Det er den dyreste delen av middagen.</li>
+      <li><b>Kjøp storpakning og frys.</b> Kjøttdeig og kyllingfilet i storpakning er ofte billigst per kilo. Del opp og frys det du ikke bruker.</li>
+      <li><b>Bruk bønner og linser.</b> Bytt ut halvparten av kjøttdeigen med bønner eller linser i taco, chili og gryter.</li>
+      <li><b>Lag dobbel porsjon.</b> Gryter, supper og lasagne blir gode rester til lunsj eller en ekstra middag.</li>
+      <li><b>Sammenlign kilopris.</b> En større pakke kan være billigere enn tilbudet på den lille. Handlelisten vår regner ut dette for deg.</li>
+    </ul></section>`,
+  }));
+}
+
+// /middagstips/: ett middagsforslag per dag, valgt ut fra ukens tilbud.
+{
+  const days = ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag', 'Søndag'];
+  const pool = [...RECIPES].sort((a, b) => (mainDeal(a) ? 0 : 1) - (mainDeal(b) ? 0 : 1));
+  const used = new Set();
+  const pick = (test) => {
+    const r = pool.find((x) => !used.has(x.id) && test(x)) || pool.find((x) => !used.has(x.id));
+    used.add(r.id);
+    return r;
+  };
+  const week = days.map((d, i) => [d, pick((r) => (i === 4 || i === 5 ? r.tags.includes('fredag') : i === 6 ? r.tags.includes('helg') : r.time <= 35 && !r.tags.includes('fredag')))]);
+  await writePage('/middagstips/', listPage({
+    path: '/middagstips/', name: 'Middagstips', title: `Middagstips for hele uken – uke ${WEEK_NO}`,
+    desc: 'Middagstips for hele uken: forslag til middag hver dag, raske hverdagsmiddager, barnevennlige retter og ukens middagstilbud.',
+    list: week.map(([, r]) => r),
+    body: `    <section class="intro"><h1>Middagstips for hele uken</h1><p class="lead">Vet du ikke hva du skal ha til middag? Her er ett forslag for hver dag denne uken, valgt ut fra ukens tilbud. Vil du ha flere forslag og handleliste, se <a href="/#ukemeny">ukemenyen</a>.</p>${topicChips}</section>
+    <section class="week-tips">${week.map(([d, r]) => `<div class="week-tip"><h2>${d}</h2>${dealCard(r)}</div>`).join('')}</section>
+    <section class="tips"><h2>Flere middagstips</h2><ul>
+      <li><a href="/rask-middag/">Rask middag</a> – middager på 25 minutter eller mindre.</li>
+      <li><a href="/barnevennlig-middag/">Barnevennlig middag</a> – favoritter hele familien liker.</li>
+      <li><a href="/billig-middag/">Billig middag</a> – ukens billigste middager.</li>
+      <li><a href="/middagstilbud/">Middagstilbud</a> – kjøtt, fisk og kylling på tilbud denne uken.</li>
+      <li><a href="/fredagsmiddag/">Fredagsmiddag</a> – taco, pizza og burger.</li>
+      <li><a href="/vegetarmiddag/">Vegetarmiddag</a>, <a href="/fiskemiddag/">fiskemiddag</a> og <a href="/kyllingmiddag/">kyllingmiddag</a>.</li>
+    </ul></section>`,
+  }));
+}
+
+const urls = ['/', '/oppskrifter/', '/middagstilbud/', '/billig-middag/', '/middagstips/', ...TOPICS.map((t) => `/${t.slug}/`), ...RECIPES.map(url)];
 await writeFile(
   new URL('sitemap.xml', ROOT),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${SITE}${u}</loc><lastmod>${TODAY}</lastmod>${u === '/' ? '<changefreq>daily</changefreq>' : ''}</url>`).join('\n')}\n</urlset>\n`,
@@ -244,4 +381,4 @@ await writeFile(
     body: `    <section class="intro"><h1>Fant ikke siden</h1><p class="lead">Siden finnes ikke, eller den er flyttet.</p><p><a class="btn" href="/">Til ukens middager</a> <a class="btn btn-ghost" href="/oppskrifter/">Alle oppskrifter</a></p></section>`,
   }),
 );
-console.log(`${RECIPES.length} oppskriftssider, oversikt, forsideliste, sitemap (${urls.length} adresser), robots.txt og 404.html`);
+console.log(`${RECIPES.length} oppskriftssider, ${TOPICS.length + 3} temasider (${ACTIVE.length} aktive tilbud, uke ${WEEK_NO}), sitemap (${urls.length} adresser), robots.txt og 404.html`);
