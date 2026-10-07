@@ -342,7 +342,7 @@ function openRecipe(key) {
   const stores = oneStoreTable(e);
 
   $('#dlg-body').innerHTML = `
-    ${IMAGES.has(slugify(r.name)) ? `<img class="dlg-img" src="/assets/img/${slugify(r.name)}.webp" alt="${esc(r.name)}" width="1024" height="768">` : ''}
+    ${IMAGES.has(slugify(r.name)) ? `<figure class="dlg-fig"><img class="dlg-img" src="/assets/img/${slugify(r.name)}.webp" alt="${esc(r.name)}" width="1024" height="768">${IMAGES.get(slugify(r.name)) ? `<figcaption>${esc(IMAGES.get(slugify(r.name)))}</figcaption>` : ''}</figure>` : ''}
     <header class="dlg-head" data-cat="${r.cat}">
       <div class="card-top"><span class="cat">${CATS[r.cat]}</span><span class="time">${r.time} min</span>${r.tags.filter((t) => DIETS[t]).map((t) => `<span class="tag">${DIETS[t]}</span>`).join('')}</div>
       <h2 id="dlg-title">${esc(r.name)}</h2>

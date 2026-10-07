@@ -11,6 +11,16 @@ import { slugify } from '../assets/slug.js';
 const SITE = 'https://tilbudsmiddag.no';
 const ROOT = new URL('../', import.meta.url);
 const TODAY = new Date().toISOString().slice(0, 10);
+// Kreditering per bilde (laget av scripts/download-photos.py).
+const CREDITS = JSON.parse(await readFile(new URL('../assets/img/credits.json', import.meta.url), 'utf8').catch(() => '{}'));
+function creditHtml(slug) {
+  const c = CREDITS[slug];
+  if (!c) return 'KI-generert illustrasjon'; // Bilder uten oppføring er laget med bildeskriptet.
+  if (c.kind === 'pexels') return `Illustrasjonsfoto: <a href="${esc(c.page)}" target="_blank" rel="noopener">${esc(c.author)} / Pexels</a>`;
+  if (c.kind === 'commons') return `Foto: <a href="${esc(c.page)}" target="_blank" rel="noopener">${esc(c.author)}</a>, ${c.licenseUrl ? `<a href="${esc(c.licenseUrl)}" target="_blank" rel="noopener">${esc(c.license)}</a>` : esc(c.license)}, via Wikimedia Commons`;
+  return 'KI-generert illustrasjon';
+}
+const creditText = (slug) => creditHtml(slug).replace(/<[^>]+>/g, '');
 
 const CATS = { kylling: 'Kylling', storfe: 'Kjøttdeig og storfe', svin: 'Svin', lam: 'Lam', fisk: 'Fisk og sjømat', vegetar: 'Vegetar' };
 const CAT_ORDER = Object.keys(CATS);
@@ -84,7 +94,7 @@ ${body}
   <footer class="site-foot">
     <div class="wrap foot-row">
       <p><strong>tilbudsmiddag.no</strong> – middager fra ukens tilbudsaviser.</p>
-      <nav aria-label="Bunnmeny"><a href="/">Ukens middager</a> · <a href="/oppskrifter/">Alle oppskrifter</a></nav>
+      <nav aria-label="Bunnmeny"><a href="/">Ukens middager</a> · <a href="/oppskrifter/">Alle oppskrifter</a> · <a href="/bildekreditering/">Bildekreditering</a></nav>
     </div>
   </footer>
 </body>
@@ -130,7 +140,7 @@ function recipePage(r) {
   };
   const body = `${crumbs(trail)}
     <article class="recipe-page" data-cat="${r.cat}">
-      ${img(r) ? `<img class="recipe-img" src="${img(r)}" alt="${esc(r.name)}" width="1024" height="768" fetchpriority="high">` : ''}
+      ${img(r) ? `<figure class="recipe-fig"><img class="recipe-img" src="${img(r)}" alt="${esc(r.name)}" width="1024" height="768" fetchpriority="high"><figcaption>${creditHtml(slugify(r.name))}</figcaption></figure>` : ''}
       <header class="recipe-head">
         <div class="card-top"><span class="cat">${esc(CATS[r.cat])}</span><span class="time">${r.time} min</span>${r.tags.filter((t) => TAGS[t]).map((t) => `<span class="tag">${TAGS[t]}</span>`).join('')}</div>
         <h1>${esc(r.name)}</h1>
@@ -201,8 +211,22 @@ await writeFile(indexUrl, marked);
 
 // Liste over bildene som finnes, så appen ikke ber om bilder som mangler.
 await writeFile(new URL('assets/images.js', ROOT), `// Laget av scripts/build-pages.mjs. Ikke rediger.
-export const IMAGES = new Set(${JSON.stringify(RECIPES.filter(img).map((r) => slugify(r.name)))});
+export const IMAGES = new Map(${JSON.stringify(RECIPES.filter(img).map((r) => [slugify(r.name), creditText(slugify(r.name))]))});
 `);
+
+// Side med kreditering av alle bilder.
+await mkdir(new URL('bildekreditering/', ROOT), { recursive: true });
+await writeFile(
+  new URL('bildekreditering/index.html', ROOT),
+  page({
+    title: 'Bildekreditering | Tilbudsmiddag',
+    description: 'Fotografer og lisenser for bildene på tilbudsmiddag.no.',
+    path: '/bildekreditering/',
+    body: `${crumbs([['Forside', '/'], ['Bildekreditering']])}
+    <section class="intro"><h1>Bildekreditering</h1><p class="lead">Bildene fra Pexels er illustrasjonsfoto og viser ikke nødvendigvis akkurat vår oppskrift. KI-genererte bilder er laget med Qwen-Image. Takk til fotografene.</p></section>
+    <ul class="credits">${RECIPES.filter(img).map((r) => `<li><a href="${url(r)}">${esc(r.name)}</a> – ${creditHtml(slugify(r.name)) || 'Tilbudsmiddag'}</li>`).join('')}</ul>`,
+  }),
+);
 
 const urls = ['/', '/oppskrifter/', ...RECIPES.map(url)];
 await writeFile(
