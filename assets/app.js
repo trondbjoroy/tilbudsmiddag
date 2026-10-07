@@ -277,7 +277,9 @@ function renderFlyers() {
     const till = Math.max(...cats.map((x) => Date.parse(x.till)));
     return `<a class="flyer" href="${esc(link(c))}" target="_blank" rel="noopener">${chainBadge(c)}<span>${n} tilbud</span><small>til ${shortDate(till)}</small></a>`;
   }).join('');
-  if (e?.summary) $('#enhver-summary').innerHTML = `<p>${esc(e.summary)}</p><p class="muted">Kilde: <a href="https://enhver.no/" target="_blank" rel="noopener">enhver.no</a>, uke ${esc(e.week)}</p>`;
+  // Bare de to første setningene. Resten forklarer metoden til enhver.no og forvirrer her.
+  const summary = e?.summary?.split(/(?<=[.!?])\s+/).slice(0, 2).join(' ');
+  if (summary) $('#enhver-summary').innerHTML = `<p>${esc(summary)}</p><p class="muted">Kilde: <a href="https://enhver.no/" target="_blank" rel="noopener">enhver.no</a>, uke ${esc(e.week)}</p>`;
 }
 
 // ---------- Oppskrift og handleliste ----------
