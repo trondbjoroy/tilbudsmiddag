@@ -49,7 +49,6 @@ async function fetchOffers(catalog) {
     prePrice: o.pricing.pre_price,
     size: o.quantity?.size?.from ?? null,
     unit: o.quantity?.unit?.symbol ?? null,
-    image: o.images?.thumb ?? null,
     from: o.run_from,
     till: o.run_till,
     catalog: catalog.id,
