@@ -201,7 +201,10 @@ function renderControls() {
   const chains = [...new Set(DATA.catalogs.map((c) => c.chain))].sort((a, b) => a.localeCompare(b, 'nb'));
   const chip = (group, value, label, on) => `<button type="button" class="chip" aria-pressed="${on}" data-group="${group}" data-value="${esc(value)}">${esc(label)}</button>`;
 
-  $('#weeks').innerHTML = WEEKS.map((w, i) => `<button type="button" class="seg" aria-pressed="${state.week === i}" data-week="${i}">${i ? 'Neste uke' : 'Denne uken'} <small>uke ${w.no}</small></button>`).join('');
+  // Med bare én uke er det ingenting å velge mellom, så vi viser en etikett i stedet for knapper.
+  $('#weeks').innerHTML = WEEKS.length === 1
+    ? `<span class="seg seg-static">Denne uken <small>uke ${WEEKS[0].no}</small></span>`
+    : WEEKS.map((w, i) => `<button type="button" class="seg" aria-pressed="${state.week === i}" data-week="${i}">${i ? 'Neste uke' : 'Denne uken'} <small>uke ${w.no}</small></button>`).join('');
   $('#f-chains').innerHTML = chip('chains', '', 'Alle', !state.chains.length) + chains.map((c) => chip('chains', c, c, state.chains.includes(c))).join('');
   $('#f-cats').innerHTML = chip('cats', '', 'Alle', !state.cats.length) + Object.entries(CATS).map(([k, v]) => chip('cats', k, v, state.cats.includes(k))).join('');
   $('#f-diets').innerHTML = Object.entries(DIETS).map(([k, v]) => chip('diets', k, v, state.diets.includes(k))).join('');
