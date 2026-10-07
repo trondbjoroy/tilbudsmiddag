@@ -1,5 +1,6 @@
 import { INGREDIENTS } from './ingredients.js';
 import { RECIPES } from './recipes.js';
+import { slugify } from './slug.js';
 
 const DAYS = ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag', 'Søndag'];
 const DAY_MS = 864e5;
@@ -240,20 +241,11 @@ function renderPlan() {
   }
   $('#plan').innerHTML = plan.map((entries, d) => {
     const date = new Date(w.start + d * DAY_MS).toLocaleDateString('nb-NO', { day: 'numeric', month: 'long' });
-    const ad = d === 2 ? adSlot('wide') : '';
     return `<section class="day${d === today ? ' today' : ''}" id="dag-${d}">
       <h2>${DAYS[d]} <span>${date}${d === today ? ' · i dag' : ''}</span></h2>
       <div class="cards">${entries.map((e, i) => cardHtml(e, d, i)).join('')}</div>
-    </section>${ad}`;
+    </section>`;
   }).join('');
-}
-
-function adSlot(kind) {
-  return `<aside class="ad ad-${kind}" aria-label="Annonseplass">
-    <span class="ad-label">Annonse</span>
-    <p><strong>Din annonse her?</strong> Nå folk som planlegger ukens middager og handel.</p>
-    <a class="btn btn-small" href="annonser.html">Annonser hos oss</a>
-  </aside>`;
 }
 
 // Kjedenes egne sider for tilbudsavisen.
@@ -324,9 +316,20 @@ function offerLine(o) {
   return `<b>${priceLabel(o)}</b>${pre}${estText(o)} <span class="muted">· ${esc(o.heading)}${o.description ? ' – ' + esc(o.description) : ''} · t.o.m. ${shortDate(o.till)}</span>`;
 }
 
-function openRecipe(d, i) {
-  const e = plan[d]?.[i];
-  if (!e) return;
+// Nøkkel "d:i" er en middag i ukeplanen. Nøkkel "r:<id>" er en oppskrift fra en lenke.
+function entryFor(key) {
+  if (key.startsWith('r:')) {
+    const r = RECIPES.find((x) => x.id === key.slice(2));
+    return r && { e: evaluate(r, buildMatcher(activeOffers())), d: null };
+  }
+  const [d, i] = key.split(':').map(Number);
+  return plan[d]?.[i] && { e: plan[d][i], d };
+}
+
+function openRecipe(key) {
+  const hit = entryFor(key);
+  if (!hit) return;
+  const { e, d } = hit;
   const r = e.recipe;
   const g = shoppingGroups(e);
   const item = (it, body) => `<li><label><input type="checkbox"><span class="item-name">${esc(it.def.name)}</span> <span class="qty">${fmtQty(it.qty, it.unit)}${it.note ? ', ' + esc(it.note) : ''}</span></label>${body ? `<div class="item-offer">${body}</div>` : ''}</li>`;
@@ -340,7 +343,7 @@ function openRecipe(d, i) {
     <header class="dlg-head" data-cat="${r.cat}">
       <div class="card-top"><span class="cat">${CATS[r.cat]}</span><span class="time">${r.time} min</span>${r.tags.filter((t) => DIETS[t]).map((t) => `<span class="tag">${DIETS[t]}</span>`).join('')}</div>
       <h2 id="dlg-title">${esc(r.name)}</h2>
-      <p class="muted">${DAYS[d]} · ${e.onOffer} av ${e.need} varer på tilbud${e.cost ? ` · handleliste ca. ${kr(Math.round(e.cost))}` : ''}${e.saved >= 5 ? ` · spar ca. ${kr(Math.round(e.saved))}` : ''}</p>
+      <p class="muted">${d != null ? DAYS[d] + ' · ' : ''}${e.onOffer} av ${e.need} varer på tilbud${e.cost ? ` · handleliste ca. ${kr(Math.round(e.cost))}` : ''}${e.saved >= 5 ? ` · spar ca. ${kr(Math.round(e.saved))}` : ''}</p>
       <div class="portions">Porsjoner <button type="button" class="step" data-portions="-1" aria-label="Færre porsjoner">−</button><b>${state.portions}</b><button type="button" class="step" data-portions="1" aria-label="Flere porsjoner">+</button></div>
     </header>
     <div class="dlg-grid">
@@ -360,9 +363,10 @@ function openRecipe(d, i) {
         <ul class="ing">${e.items.map((it) => `<li><span>${esc(it.def.name)}${it.note ? ` <span class="muted">(${esc(it.note)})</span>` : ''}</span><span class="qty">${fmtQty(it.qty, it.unit)}</span></li>`).join('')}</ul>
         <h3>Slik gjør du</h3>
         <ol class="steps">${r.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>
+        <p class="page-link"><a href="/oppskrift/${slugify(r.name)}/">Åpne oppskriften som egen side →</a></p>
       </section>
     </div>`;
-  $('#dlg').dataset.open = `${d}:${i}`;
+  $('#dlg').dataset.open = key;
   if (!$('#dlg').open) $('#dlg').showModal();
 }
 
@@ -407,15 +411,14 @@ function onClick(ev) {
     state.portions = Math.min(12, Math.max(1, state.portions + Number(t.dataset.portions)));
     update();
     const open = $('#dlg').dataset.open;
-    if ($('#dlg').open && open) openRecipe(...open.split(':').map(Number));
+    if ($('#dlg').open && open) openRecipe(open);
   } else if (t.dataset.open) {
-    openRecipe(...t.dataset.open.split(':').map(Number));
+    openRecipe(t.dataset.open);
   } else if ('reset' in t.dataset) {
     state = { ...DEFAULTS, week: state.week, portions: state.portions, perDay: state.perDay };
     update();
   } else if ('copy' in t.dataset) {
-    const [d, i] = $('#dlg').dataset.open.split(':').map(Number);
-    navigator.clipboard.writeText(shoppingText(plan[d][i])).then(() => {
+    navigator.clipboard.writeText(shoppingText(entryFor($('#dlg').dataset.open).e)).then(() => {
       t.textContent = 'Kopiert!';
       setTimeout(() => (t.textContent = 'Kopier handleliste'), 2000);
     });
@@ -437,7 +440,7 @@ async function init() {
     if (ev.target === $('#dlg')) $('#dlg').close();
   });
   try {
-    DATA = await (await fetch('data/offers.json', { cache: 'no-cache' })).json();
+    DATA = await (await fetch('/data/offers.json', { cache: 'no-cache' })).json();
   } catch {
     $('#plan').innerHTML = '<div class="empty"><h3>Klarte ikke å hente ukens tilbud</h3><p>Prøv å laste siden på nytt.</p></div>';
     return;
@@ -447,6 +450,8 @@ async function init() {
   $('#updated').textContent = new Date(DATA.generatedAt).toLocaleString('nb-NO', { dateStyle: 'long', timeStyle: 'short' });
   renderFlyers();
   update();
+  const fromLink = location.hash.match(/^#oppskrift=([\w-]+)$/);
+  if (fromLink) openRecipe('r:' + fromLink[1]);
 }
 
 init();

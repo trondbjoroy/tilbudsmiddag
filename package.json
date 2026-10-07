@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev-server.mjs",
-    "update-data": "node scripts/update-data.mjs"
+    "update-data": "node scripts/update-data.mjs",
+    "build-pages": "node scripts/build-pages.mjs"
   },
   "engines": {
     "node": ">=20"

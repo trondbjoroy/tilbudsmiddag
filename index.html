@@ -3,28 +3,45 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tilbudsmiddag – middager fra ukens tilbudsaviser</title>
-  <meta name="description" content="Middagsforslag for hver dag i uken, laget av ukens beste tilbud fra REMA 1000, KIWI, Extra, Obs, MENY, SPAR, Joker, Bunnpris og flere. Med oppskrift og handleliste per butikk.">
-  <meta property="og:title" content="Tilbudsmiddag – middager fra ukens tilbudsaviser">
-  <meta property="og:description" content="Ukens middager med oppskrift og handleliste, laget av de beste tilbudene i dagligvarekjedene.">
+  <title>Tilbudsmiddag – ukemeny med middager fra ukens tilbudsaviser</title>
+  <meta name="description" content="Middagstips for hver dag i uken, laget av ukens beste tilbud hos REMA 1000, KIWI, Extra, Obs, MENY, SPAR, Joker og Bunnpris. Med oppskrift og handleliste som viser hvor varene er billigst.">
+  <link rel="canonical" href="https://tilbudsmiddag.no/">
+  <meta property="og:site_name" content="Tilbudsmiddag">
+  <meta property="og:locale" content="nb_NO">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://tilbudsmiddag.no/">
+  <meta property="og:title" content="Tilbudsmiddag – ukemeny med middager fra ukens tilbud">
+  <meta property="og:description" content="Middagstips for hver dag, med oppskrift og handleliste som viser hvilken butikk som har varen billigst denne uken.">
+  <meta property="og:image" content="https://tilbudsmiddag.no/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#c8442b">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css">
-  <script src="assets/theme.js"></script>
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/assets/theme.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Tilbudsmiddag",
+    "url": "https://tilbudsmiddag.no/",
+    "inLanguage": "nb-NO",
+    "description": "Middagstips for hver dag i uken, laget av ukens tilbud i dagligvarekjedene."
+  }
+  </script>
 </head>
 <body>
   <header class="site-head">
     <div class="wrap head-row">
-      <a class="logo" href="./"><span class="logo-mark" aria-hidden="true"></span>tilbudsmiddag</a>
+      <a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>tilbudsmiddag</a>
       <nav class="nav" aria-label="Hovedmeny">
-        <a href="#ukemeny">Ukemeny</a>
-        <a href="#aviser">Tilbudsaviser</a>
-        <a href="annonser.html" class="nav-ad">Annonser<span class="hide-xs"> hos oss</span></a>
+        <a href="#ukemeny" class="hide-xs">Ukemeny</a>
+        <a href="/oppskrifter/">Oppskrifter</a>
+        <a href="#aviser" class="hide-xs">Tilbudsaviser</a>
         <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Bytt fargemodus">
           <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
           <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -62,11 +79,6 @@
           </div>
           <button type="button" class="link-btn" data-reset>Nullstill filtre</button>
         </details>
-        <aside class="ad ad-side" aria-label="Annonseplass">
-          <span class="ad-label">Annonse</span>
-          <p><strong>Annonseplass ledig</strong> Vis frem butikken, merkevaren eller kampanjen din her.</p>
-          <a class="btn btn-small" href="annonser.html">Annonser hos oss</a>
-        </aside>
       </aside>
 
       <div class="plan" id="plan" aria-live="polite">
@@ -79,6 +91,29 @@
       <p class="muted">Middagene bygger på disse avisene. Trykk for å se hele avisen hos kjeden.</p>
       <div class="flyers" id="flyers"></div>
     </section>
+
+    <section class="about-section">
+      <h2>Slik finner vi ukens billigste middager</h2>
+      <div class="about-grid">
+        <div><h3>1. Vi leser tilbudsavisene</h3><p>Hver uke går vi gjennom tilbudene til REMA 1000, KIWI, Extra, Obs, Coop Prix, Coop Mega, MENY, SPAR, Joker og Bunnpris.</p></div>
+        <div><h3>2. Vi matcher med oppskrifter</h3><p>Middager der kjøttet, fisken eller hovedråvaren er på tilbud kommer først. Du får forslag til hver dag fra mandag til søndag.</p></div>
+        <div><h3>3. Du får handlelisten</h3><p>Handlelisten viser hvilken butikk som har hver vare billigst, hva du sparer, og hvor lenge tilbudet gjelder.</p></div>
+      </div>
+    </section>
+
+    <section class="recipes-section" id="oppskrifter">
+      <h2>Alle middagsoppskrifter</h2>
+<!-- RECIPES:START -->
+      <div class="rlists">
+      <div class="rlist"><h3><a href="/oppskrifter/#kylling">Kylling</a></h3><ul><li><a href="/oppskrift/helstekt-kylling-med-poteter-og-salat/">Helstekt kylling med poteter og salat</a></li><li><a href="/oppskrift/kylling-tikka-masala/">Kylling tikka masala</a></li><li><a href="/oppskrift/kyllingburger-med-coleslaw/">Kyllingburger med coleslaw</a></li><li><a href="/oppskrift/kyllingfajitas/">Kyllingfajitas</a></li><li><a href="/oppskrift/kyllinggryte-med-kokos-og-rod-karri/">Kyllinggryte med kokos og rød karri</a></li><li><a href="/oppskrift/kyllingsuppe-med-gronnsaker/">Kyllingsuppe med grønnsaker</a></li><li><a href="/oppskrift/kyllingwok-med-nudler/">Kyllingwok med nudler</a></li><li><a href="/oppskrift/myke-tacos-med-pulled-chicken/">Myke tacos med pulled chicken</a></li><li><a href="/oppskrift/ovnsbakte-kyllinglar-med-rotgronnsaker/">Ovnsbakte kyllinglår med rotgrønnsaker</a></li><li><a href="/oppskrift/pasta-med-kylling-og-pesto/">Pasta med kylling og pesto</a></li><li><a href="/oppskrift/spro-kyllinglarfilet-med-ris-og-brokkoli/">Sprø kyllinglårfilet med ris og brokkoli</a></li></ul></div>
+      <div class="rlist"><h3><a href="/oppskrifter/#storfe">Kjøttdeig og storfe</a></h3><ul><li><a href="/oppskrift/biffstrimler-i-wok-med-nudler/">Biffstrimler i wok med nudler</a></li><li><a href="/oppskrift/chili-con-carne/">Chili con carne</a></li><li><a href="/oppskrift/fredagstaco/">Fredagstaco</a></li><li><a href="/oppskrift/hjemmelagde-hamburgere/">Hjemmelagde hamburgere</a></li><li><a href="/oppskrift/hostgryte-med-storfe/">Høstgryte med storfe</a></li><li><a href="/oppskrift/karbonadeburger-med-lok/">Karbonadeburger med løk</a></li><li><a href="/oppskrift/karbonader-med-lok/">Karbonader med løk</a></li><li><a href="/oppskrift/karbonadewok-med-ris/">Karbonadewok med ris</a></li><li><a href="/oppskrift/kjottboller-i-brun-saus-med-potetmos/">Kjøttboller i brun saus med potetmos</a></li><li><a href="/oppskrift/kjottboller-i-tomatsaus-med-pasta/">Kjøttboller i tomatsaus med pasta</a></li><li><a href="/oppskrift/kjottkaker-i-brun-saus/">Kjøttkaker i brun saus</a></li><li><a href="/oppskrift/lasagne/">Lasagne</a></li><li><a href="/oppskrift/spaghetti-bolognese/">Spaghetti bolognese</a></li></ul></div>
+      <div class="rlist"><h3><a href="/oppskrifter/#svin">Svin</a></h3><ul><li><a href="/oppskrift/kremet-pasta-med-bacon-og-brokkoli/">Kremet pasta med bacon og brokkoli</a></li><li><a href="/oppskrift/pasta-carbonara/">Pasta carbonara</a></li><li><a href="/oppskrift/pizza-med-pepperoni/">Pizza med pepperoni</a></li><li><a href="/oppskrift/pulled-pork-burger/">Pulled pork-burger</a></li><li><a href="/oppskrift/polsegryte-med-tomat/">Pølsegryte med tomat</a></li><li><a href="/oppskrift/polser-med-potetmos-og-erter/">Pølser med potetmos og erter</a></li><li><a href="/oppskrift/spareribs-i-ovn-med-potetbater/">Spareribs i ovn med potetbåter</a></li><li><a href="/oppskrift/svinefilet-med-flotesaus-og-sopp/">Svinefilet med fløtesaus og sopp</a></li><li><a href="/oppskrift/svinekoteletter-med-ovnsgronnsaker/">Svinekoteletter med ovnsgrønnsaker</a></li><li><a href="/oppskrift/sweet-og-sour-med-svinekjott/">Sweet &amp; sour med svinekjøtt</a></li></ul></div>
+      <div class="rlist"><h3><a href="/oppskrifter/#lam">Lam</a></h3><ul><li><a href="/oppskrift/farikal/">Fårikål</a></li><li><a href="/oppskrift/lammegryte-med-tomat-og-bonner/">Lammegryte med tomat og bønner</a></li><li><a href="/oppskrift/lammelarskiver-med-rotmos/">Lammelårskiver med rotmos</a></li><li><a href="/oppskrift/lammestrimler-med-paprika-og-ris/">Lammestrimler med paprika og ris</a></li></ul></div>
+      <div class="rlist"><h3><a href="/oppskrifter/#fisk">Fisk og sjømat</a></h3><ul><li><a href="/oppskrift/bergensk-fiskesuppe/">Bergensk fiskesuppe</a></li><li><a href="/oppskrift/fiskekaker-med-kokte-gronnsaker/">Fiskekaker med kokte grønnsaker</a></li><li><a href="/oppskrift/fiskepudding-med-hvit-saus/">Fiskepudding med hvit saus</a></li><li><a href="/oppskrift/kremet-pasta-med-laks-og-spinat/">Kremet pasta med laks og spinat</a></li><li><a href="/oppskrift/laks-med-soya-og-sesam-ris-og-gronnsaker/">Laks med soya og sesam, ris og grønnsaker</a></li><li><a href="/oppskrift/ovnsbakt-laks-med-poteter-og-brokkoli/">Ovnsbakt laks med poteter og brokkoli</a></li><li><a href="/oppskrift/panert-sei-med-remulade/">Panert sei med remulade</a></li><li><a href="/oppskrift/pasta-med-tunfisk-og-tomat/">Pasta med tunfisk og tomat</a></li><li><a href="/oppskrift/rekefest-med-loff-og-majones/">Rekefest med loff og majones</a></li><li><a href="/oppskrift/stekt-orret-med-agurksalat/">Stekt ørret med agurksalat</a></li><li><a href="/oppskrift/taco-med-scampi/">Taco med scampi</a></li><li><a href="/oppskrift/torsk-med-bacon-og-gulrotstuing/">Torsk med bacon og gulrotstuing</a></li></ul></div>
+      <div class="rlist"><h3><a href="/oppskrifter/#vegetar">Vegetar</a></h3><ul><li><a href="/oppskrift/brokkoli-og-blomkalgrateng/">Brokkoli- og blomkålgrateng</a></li><li><a href="/oppskrift/falafel-i-pita-med-tzatziki/">Falafel i pita med tzatziki</a></li><li><a href="/oppskrift/gronnsakswok-med-egg-og-nudler/">Grønnsakswok med egg og nudler</a></li><li><a href="/oppskrift/hjemmelaget-pizza/">Hjemmelaget pizza</a></li><li><a href="/oppskrift/kikertgryte-med-spinat-og-ris/">Kikertgryte med spinat og ris</a></li><li><a href="/oppskrift/kremet-blomkalsuppe/">Kremet blomkålsuppe</a></li><li><a href="/oppskrift/kremet-soppasta-med-parmesan/">Kremet soppasta med parmesan</a></li><li><a href="/oppskrift/linsesuppe-med-tomat-og-kokos/">Linsesuppe med tomat og kokos</a></li><li><a href="/oppskrift/ovnsbakt-sotpotet-med-kikerter-og-feta/">Ovnsbakt søtpotet med kikerter og feta</a></li><li><a href="/oppskrift/ovnsomelett-med-gronnsaker/">Ovnsomelett med grønnsaker</a></li><li><a href="/oppskrift/pasta-med-pesto-tomat-og-mozzarella/">Pasta med pesto, tomat og mozzarella</a></li><li><a href="/oppskrift/shakshuka-med-brod/">Shakshuka med brød</a></li><li><a href="/oppskrift/tomatsuppe-med-makaroni-og-egg/">Tomatsuppe med makaroni og egg</a></li><li><a href="/oppskrift/vegetarchili-med-bonner-og-mais/">Vegetarchili med bønner og mais</a></li><li><a href="/oppskrift/vegetartaco-med-bonner-og-sotpotet/">Vegetartaco med bønner og søtpotet</a></li></ul></div>
+      </div>
+<!-- RECIPES:END -->
+    </section>
   </main>
 
   <footer class="site-foot">
@@ -87,7 +122,7 @@
         <p><strong>tilbudsmiddag.no</strong> – middager fra ukens tilbudsaviser.</p>
         <p class="muted">Tilbudene hentes fra kjedenes tilbudsaviser via eTilbudsavis. Priser og utvalg kan variere mellom butikker. Sist oppdatert <span id="updated">–</span>.</p>
       </div>
-      <nav aria-label="Bunnmeny"><a href="annonser.html">Annonser hos oss</a></nav>
+      <nav aria-label="Bunnmeny"><a href="/oppskrifter/">Alle oppskrifter</a></nav>
     </div>
   </footer>
 
@@ -96,6 +131,6 @@
     <div id="dlg-body"></div>
   </dialog>
 
-  <script type="module" src="assets/app.js"></script>
+  <script type="module" src="/assets/app.js"></script>
 </body>
 </html>
