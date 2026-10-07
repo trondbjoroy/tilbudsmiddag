@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tilbudsmiddag – middager fra ukens tilbudsaviser</title>
+  <meta name="description" content="Middagsforslag for hver dag i uken, laget av ukens beste tilbud fra REMA 1000, KIWI, Extra, Obs, MENY, SPAR, Joker, Bunnpris og flere. Med oppskrift og handleliste per butikk.">
+  <meta property="og:title" content="Tilbudsmiddag – middager fra ukens tilbudsaviser">
+  <meta property="og:description" content="Ukens middager med oppskrift og handleliste, laget av de beste tilbudene i dagligvarekjedene.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tilbudsmiddag.no/">
+  <meta name="theme-color" content="#c8442b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-row">
+      <a class="logo" href="./"><span class="logo-mark" aria-hidden="true"></span>tilbudsmiddag</a>
+      <nav class="nav" aria-label="Hovedmeny">
+        <a href="#ukemeny">Ukemeny</a>
+        <a href="#aviser">Tilbudsaviser</a>
+        <a href="annonser.html" class="nav-ad">Annonser hos oss</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <h1>Ukens middager fra ukens tilbud</h1>
+      <p class="lead">Vi går gjennom tilbudsavisene til dagligvarekjedene og foreslår middager for hver dag. Hver middag har oppskrift og handleliste som viser hvilken butikk som har varen billigst.</p>
+      <div class="week-row">
+        <div class="segs" id="weeks" role="group" aria-label="Velg uke"></div>
+        <p class="muted" id="summary"></p>
+      </div>
+    </section>
+
+    <div class="layout" id="ukemeny">
+      <aside class="filters">
+        <details open>
+          <summary>Filtrer <span id="filter-count"></span></summary>
+          <div class="f-group">
+            <label for="f-q" class="f-label">Søk etter rett eller råvare</label>
+            <input id="f-q" type="search" placeholder="F.eks. laks, taco, kylling" autocomplete="off">
+          </div>
+          <div class="f-group"><span class="f-label">Butikker</span><div class="chips" id="f-chains"></div></div>
+          <div class="f-group"><span class="f-label">Hovedråvare</span><div class="chips" id="f-cats"></div></div>
+          <div class="f-group"><span class="f-label">Kosthold og barn</span><div class="chips" id="f-diets"></div></div>
+          <div class="f-group"><span class="f-label">Maks tid</span><div class="chips" id="f-time"></div></div>
+          <div class="f-group"><span class="f-label">Forslag per dag</span><div class="chips" id="f-perday"></div></div>
+          <div class="f-group f-inline">
+            <span class="f-label">Porsjoner</span>
+            <div class="portions"><button type="button" class="step" data-portions="-1" aria-label="Færre porsjoner">−</button><b id="f-portions">4</b><button type="button" class="step" data-portions="1" aria-label="Flere porsjoner">+</button></div>
+          </div>
+          <button type="button" class="link-btn" data-reset>Nullstill filtre</button>
+        </details>
+        <aside class="ad ad-side" aria-label="Annonseplass">
+          <span class="ad-label">Annonse</span>
+          <p><strong>Annonseplass ledig</strong> Vis frem butikken, merkevaren eller kampanjen din her.</p>
+          <a class="btn btn-small" href="annonser.html">Annonser hos oss</a>
+        </aside>
+      </aside>
+
+      <div class="plan" id="plan" aria-live="polite">
+        <p class="muted">Henter ukens tilbud …</p>
+      </div>
+    </div>
+
+    <section class="flyers-section" id="aviser">
+      <h2>Ukens tilbudsaviser</h2>
+      <p class="muted">Middagene bygger på disse avisene. Trykk for å se hele avisen hos kjeden.</p>
+      <div class="flyers" id="flyers"></div>
+      <div class="enhver" id="enhver-summary"></div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap foot-row">
+      <div>
+        <p><strong>tilbudsmiddag.no</strong> – middager fra ukens tilbudsaviser.</p>
+        <p class="muted">Tilbudene hentes fra kjedenes tilbudsaviser via eTilbudsavis. Prisene på basisvarer kommer fra <a href="https://enhver.no/" target="_blank" rel="noopener">enhver.no</a>. Priser og utvalg kan variere mellom butikker. Sist oppdatert <span id="updated">–</span>.</p>
+      </div>
+      <nav aria-label="Bunnmeny"><a href="annonser.html">Annonser hos oss</a></nav>
+    </div>
+  </footer>
+
+  <dialog id="dlg" aria-labelledby="dlg-title">
+    <button type="button" class="dlg-close" data-close aria-label="Lukk">×</button>
+    <div id="dlg-body"></div>
+  </dialog>
+
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>

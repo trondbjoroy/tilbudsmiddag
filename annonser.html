@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Annonser hos oss – Tilbudsmiddag</title>
+  <meta name="description" content="Annonser på tilbudsmiddag.no og nå folk som planlegger ukens middager og dagligvarehandel.">
+  <meta name="theme-color" content="#c8442b">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .ad-page { display: grid; grid-template-columns: 1fr 1.1fr; gap: 36px; padding: 32px 0 56px; align-items: start; }
+    @media (max-width: 860px) { .ad-page { grid-template-columns: 1fr; gap: 20px; } }
+    .ad-page h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 0 0 12px; line-height: 1.15; }
+    .points { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 12px; }
+    .points li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+    .points b { display: block; }
+    .form { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; box-shadow: var(--shadow); display: grid; gap: 14px; }
+    .form h2 { margin: 0; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 520px) { .row { grid-template-columns: 1fr; } }
+    .field { display: grid; gap: 5px; }
+    .field label { font-weight: 600; font-size: 0.92rem; }
+    .field input, .field textarea, .field select { width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; background: var(--bg); color: var(--ink); }
+    .field textarea { min-height: 130px; resize: vertical; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .status { margin: 0; padding: 10px 12px; border-radius: 10px; display: none; }
+    .status.ok { display: block; background: var(--save-bg); color: var(--save); }
+    .status.err { display: block; background: #fbe4df; color: #9c2a14; }
+  </style>
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap head-row">
+      <a class="logo" href="./"><span class="logo-mark" aria-hidden="true"></span>tilbudsmiddag</a>
+      <nav class="nav" aria-label="Hovedmeny">
+        <a href="./#ukemeny">Ukemeny</a>
+        <a href="./#aviser">Tilbudsaviser</a>
+        <a href="annonser.html" class="nav-ad" aria-current="page">Annonser hos oss</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap ad-page">
+    <section>
+      <h1>Annonser på tilbudsmiddag.no</h1>
+      <p class="lead">Våre besøkende planlegger ukens middager og handel. De er klare til å kjøpe, og de leter etter gode tilbud.</p>
+      <ul class="points">
+        <li><b>Riktig øyeblikk</b>Vis kampanjen din når folk bestemmer hva de skal handle denne uken.</li>
+        <li><b>Synlig plassering</b>Annonseplasser i ukemenyen og ved siden av filtrene.</li>
+        <li><b>Fleksibelt</b>Book én uke eller en lengre periode. Vi finner et opplegg som passer deg.</li>
+      </ul>
+    </section>
+
+    <form class="form" id="ad-form" novalidate>
+      <h2>Ta kontakt</h2>
+      <p class="muted" style="margin:0">Fyll ut skjemaet, så svarer vi deg så snart vi kan.</p>
+      <div class="row">
+        <div class="field"><label for="name">Navn</label><input id="name" name="name" autocomplete="name" required maxlength="100"></div>
+        <div class="field"><label for="company">Firma</label><input id="company" name="company" autocomplete="organization" maxlength="100"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="email">E-post</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
+        <div class="field"><label for="phone">Telefon <span class="muted">(valgfritt)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40"></div>
+      </div>
+      <div class="field">
+        <label for="topic">Hva gjelder det?</label>
+        <select id="topic" name="topic">
+          <option>Annonsering</option>
+          <option>Samarbeid</option>
+          <option>Annet</option>
+        </select>
+      </div>
+      <div class="field"><label for="message">Melding</label><textarea id="message" name="message" required maxlength="4000" placeholder="Fortell kort om hva du vil annonsere, og når."></textarea></div>
+      <div class="hp" aria-hidden="true"><label for="website">Ikke fyll ut dette feltet</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+      <p class="status" id="status" role="status"></p>
+      <button class="btn" type="submit" id="send">Send melding</button>
+    </form>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap foot-row">
+      <p><strong>tilbudsmiddag.no</strong> – middager fra ukens tilbudsaviser.</p>
+      <nav aria-label="Bunnmeny"><a href="./">Til ukemenyen</a></nav>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('ad-form');
+    const status = document.getElementById('status');
+    const send = document.getElementById('send');
+    const loadedAt = Date.now();
+    const show = (cls, text) => { status.className = 'status ' + cls; status.textContent = text; };
+
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      if (!form.checkValidity()) {
+        show('err', 'Fyll ut navn, en gyldig e-postadresse og en melding.');
+        form.querySelector(':invalid')?.focus();
+        return;
+      }
+      send.disabled = true;
+      send.textContent = 'Sender …';
+      try {
+        const body = Object.fromEntries(new FormData(form));
+        body.elapsed = Date.now() - loadedAt;
+        const res = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(out.error || 'Noe gikk galt.');
+        form.reset();
+        show('ok', 'Takk! Meldingen er sendt. Vi svarer deg så snart vi kan.');
+      } catch (err) {
+        show('err', err.message + ' Prøv igjen senere.');
+      } finally {
+        send.disabled = false;
+        send.textContent = 'Send melding';
+      }
+    });
+  </script>
+</body>
+</html>
