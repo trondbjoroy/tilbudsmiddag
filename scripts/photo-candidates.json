@@ -1,0 +1,462 @@
+{
+ "kylling-wok": {
+  "name": "Kyllingwok med nudler",
+  "candidates": []
+ },
+ "kylling-fajitas": {
+  "name": "Kyllingfajitas",
+  "candidates": []
+ },
+ "ovnskylling-lar": {
+  "name": "Ovnsbakte kyllinglår med rotgrønnsaker",
+  "candidates": []
+ },
+ "kylling-lar-ris": {
+  "name": "Sprø kyllinglårfilet med ris og brokkoli",
+  "candidates": []
+ },
+ "helstekt-kylling": {
+  "name": "Helstekt kylling med poteter og salat",
+  "candidates": []
+ },
+ "kylling-pasta-pesto": {
+  "name": "Pasta med kylling og pesto",
+  "candidates": []
+ },
+ "kyllingburger": {
+  "name": "Kyllingburger med coleslaw",
+  "candidates": []
+ },
+ "pulled-chicken-taco": {
+  "name": "Myke tacos med pulled chicken",
+  "candidates": []
+ },
+ "kyllingsuppe": {
+  "name": "Kyllingsuppe med grønnsaker",
+  "candidates": []
+ },
+ "taco": {
+  "name": "Fredagstaco",
+  "candidates": []
+ },
+ "spaghetti-bolognese": {
+  "name": "Spaghetti bolognese",
+  "candidates": []
+ },
+ "lasagne": {
+  "name": "Lasagne",
+  "candidates": []
+ },
+ "hamburger": {
+  "name": "Hjemmelagde hamburgere",
+  "candidates": []
+ },
+ "kjottboller-tomatsaus": {
+  "name": "Kjøttboller i tomatsaus med pasta",
+  "candidates": []
+ },
+ "kjottboller-brun": {
+  "name": "Kjøttboller i brun saus med potetmos",
+  "candidates": [
+   {
+    "source": "Wikimedia Commons",
+    "title": "Feed America, Cloudy with a Chance of Meatballs 2, Truck.jpg",
+    "author": "Neon Tommy, Xizi (Cecilia) Hua",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Feed_America,_Cloudy_with_a_Chance_of_Meatballs_2,_Truck.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Feed_America%2C_Cloudy_with_a_Chance_of_Meatballs_2%2C_Truck.jpg/400px-Feed_America%2C_Cloudy_with_a_Chance_of_Meatballs_2%2C_Truck.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Feed_America%2C_Cloudy_with_a_Chance_of_Meatballs_2%2C_Truck.jpg/1280px-Feed_America%2C_Cloudy_with_a_Chance_of_Meatballs_2%2C_Truck.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   },
+   {
+    "source": "Wikimedia Commons",
+    "title": "Feed America, Cloudy with a Chance of Meatballs 2, Anna Faris.jpg",
+    "author": "Neon Tommy, Xizi (Cecilia) Hua",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Feed_America,_Cloudy_with_a_Chance_of_Meatballs_2,_Anna_Faris.jpg",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/6/67/Feed_America%2C_Cloudy_with_a_Chance_of_Meatballs_2%2C_Anna_Faris.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "full": "https://upload.wikimedia.org/wikipedia/commons/6/67/Feed_America%2C_Cloudy_with_a_Chance_of_Meatballs_2%2C_Anna_Faris.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+   },
+   {
+    "source": "Wikimedia Commons",
+    "title": "Feed America, Cloudy with a Chance of Meatballs 2, Will Forte.jpg",
+    "author": "Neon Tommy, Xizi (Cecilia) Hua (original version) Drafnir (rotated and cropped version)",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Feed_America,_Cloudy_with_a_Chance_of_Meatballs_2,_Will_Forte.jpg",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/8/81/Feed_America%2C_Cloudy_with_a_Chance_of_Meatballs_2%2C_Will_Forte.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "full": "https://upload.wikimedia.org/wikipedia/commons/8/81/Feed_America%2C_Cloudy_with_a_Chance_of_Meatballs_2%2C_Will_Forte.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+   }
+  ]
+ },
+ "kjottkaker": {
+  "name": "Kjøttkaker i brun saus",
+  "candidates": [
+   {
+    "source": "Wikimedia Commons",
+    "title": "Traditional Kjøttkaker.jpg",
+    "author": "Edward Russell",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Traditional_Kj%C3%B8ttkaker.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Traditional_Kj%C3%B8ttkaker.jpg/400px-Traditional_Kj%C3%B8ttkaker.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Traditional_Kj%C3%B8ttkaker.jpg/1280px-Traditional_Kj%C3%B8ttkaker.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   }
+  ]
+ },
+ "karbonader": {
+  "name": "Karbonader med løk",
+  "candidates": [
+   {
+    "source": "Wikimedia Commons",
+    "title": "Biff à la Lindström in making (2645986415).jpg",
+    "author": "Miia Ranta from Finland",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Biff_%C3%A0_la_Lindstr%C3%B6m_in_making_(2645986415).jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Biff_%C3%A0_la_Lindstr%C3%B6m_in_making_%282645986415%29.jpg/400px-Biff_%C3%A0_la_Lindstr%C3%B6m_in_making_%282645986415%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Biff_%C3%A0_la_Lindstr%C3%B6m_in_making_%282645986415%29.jpg/1280px-Biff_%C3%A0_la_Lindstr%C3%B6m_in_making_%282645986415%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   },
+   {
+    "source": "Wikimedia Commons",
+    "title": "Karbonader af soy4you med kartoffelsalat.jpg",
+    "author": "Interstates",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Karbonader_af_soy4you_med_kartoffelsalat.jpg",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/2/23/Karbonader_af_soy4you_med_kartoffelsalat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "full": "https://upload.wikimedia.org/wikipedia/commons/2/23/Karbonader_af_soy4you_med_kartoffelsalat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+   },
+   {
+    "source": "Wikimedia Commons",
+    "title": "Bifflindstrom.JPG",
+    "author": "User Bengt B on sv.wikipedia",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "page": "https://commons.wikimedia.org/wiki/File:Bifflindstrom.JPG",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/2/28/Bifflindstrom.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "full": "https://upload.wikimedia.org/wikipedia/commons/2/28/Bifflindstrom.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+   }
+  ]
+ },
+ "karbonadedeig-wok": {
+  "name": "Karbonadewok med ris",
+  "candidates": []
+ },
+ "karbonade-burger": {
+  "name": "Karbonadeburger med løk",
+  "candidates": []
+ },
+ "chili-con-carne": {
+  "name": "Chili con carne",
+  "candidates": []
+ },
+ "biffwok": {
+  "name": "Biffstrimler i wok med nudler",
+  "candidates": []
+ },
+ "storfegryte": {
+  "name": "Høstgryte med storfe",
+  "candidates": []
+ },
+ "koteletter": {
+  "name": "Svinekoteletter med ovnsgrønnsaker",
+  "candidates": []
+ },
+ "svinefilet": {
+  "name": "Svinefilet med fløtesaus og sopp",
+  "candidates": []
+ },
+ "svin-sweet-sour": {
+  "name": "Sweet & sour med svinekjøtt",
+  "candidates": []
+ },
+ "pulled-pork-burger": {
+  "name": "Pulled pork-burger",
+  "candidates": []
+ },
+ "polse-potetstappe": {
+  "name": "Pølser med potetmos og erter",
+  "candidates": []
+ },
+ "polsegryte": {
+  "name": "Pølsegryte med tomat",
+  "candidates": []
+ },
+ "carbonara": {
+  "name": "Pasta carbonara",
+  "candidates": []
+ },
+ "spareribs": {
+  "name": "Spareribs i ovn med potetbåter",
+  "candidates": []
+ },
+ "baconpasta": {
+  "name": "Kremet pasta med bacon og brokkoli",
+  "candidates": []
+ },
+ "farikal": {
+  "name": "Fårikål",
+  "candidates": [
+   {
+    "source": "Wikimedia Commons",
+    "title": "Får i kål.jpg",
+    "author": "Jarvin",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:F%C3%A5r_i_k%C3%A5l.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/F%C3%A5r_i_k%C3%A5l.jpg/400px-F%C3%A5r_i_k%C3%A5l.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/F%C3%A5r_i_k%C3%A5l.jpg/1280px-F%C3%A5r_i_k%C3%A5l.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   },
+   {
+    "source": "Wikimedia Commons",
+    "title": "Fårikål ingredients.png",
+    "author": "GeoO",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:F%C3%A5rik%C3%A5l_ingredients.png",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/F%C3%A5rik%C3%A5l_ingredients.png/400px-F%C3%A5rik%C3%A5l_ingredients.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/F%C3%A5rik%C3%A5l_ingredients.png/1280px-F%C3%A5rik%C3%A5l_ingredients.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   },
+   {
+    "source": "Wikimedia Commons",
+    "title": "Cultural transmission 1- \"Fårikål\" (8576627175).jpg",
+    "author": "NTNU Vitenskapsmuseet",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Cultural_transmission_1-_%22F%C3%A5rik%C3%A5l%22_(8576627175).jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Cultural_transmission_1-_%22F%C3%A5rik%C3%A5l%22_%288576627175%29.jpg/400px-Cultural_transmission_1-_%22F%C3%A5rik%C3%A5l%22_%288576627175%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Cultural_transmission_1-_%22F%C3%A5rik%C3%A5l%22_%288576627175%29.jpg/1280px-Cultural_transmission_1-_%22F%C3%A5rik%C3%A5l%22_%288576627175%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   }
+  ]
+ },
+ "lammeskiver": {
+  "name": "Lammelårskiver med rotmos",
+  "candidates": []
+ },
+ "lammegryte": {
+  "name": "Lammegryte med tomat og bønner",
+  "candidates": []
+ },
+ "lammewok": {
+  "name": "Lammestrimler med paprika og ris",
+  "candidates": []
+ },
+ "ovnslaks": {
+  "name": "Ovnsbakt laks med poteter og brokkoli",
+  "candidates": []
+ },
+ "laks-teriyaki": {
+  "name": "Laks med soya og sesam, ris og grønnsaker",
+  "candidates": []
+ },
+ "laks-pasta": {
+  "name": "Kremet pasta med laks og spinat",
+  "candidates": []
+ },
+ "orret": {
+  "name": "Stekt ørret med agurksalat",
+  "candidates": []
+ },
+ "torsk": {
+  "name": "Torsk med bacon og gulrotstuing",
+  "candidates": [
+   {
+    "source": "Wikimedia Commons",
+    "title": "Overlege Wingesvei 4A inne 20201029 170053.jpg",
+    "author": "Ranværing",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Overlege_Wingesvei_4A_inne_20201029_170053.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Overlege_Wingesvei_4A_inne_20201029_170053.jpg/400px-Overlege_Wingesvei_4A_inne_20201029_170053.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Overlege_Wingesvei_4A_inne_20201029_170053.jpg/1280px-Overlege_Wingesvei_4A_inne_20201029_170053.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   },
+   {
+    "source": "Wikimedia Commons",
+    "title": "Norske fiskere skaffer mat til Storbritannia (fo30141801260128).jpg",
+    "author": "Riksarkivet / Backer, Ole Friele",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "page": "https://commons.wikimedia.org/wiki/File:Norske_fiskere_skaffer_mat_til_Storbritannia_(fo30141801260128).jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Norske_fiskere_skaffer_mat_til_Storbritannia_%28fo30141801260128%29.jpg/400px-Norske_fiskere_skaffer_mat_til_Storbritannia_%28fo30141801260128%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Norske_fiskere_skaffer_mat_til_Storbritannia_%28fo30141801260128%29.jpg/1280px-Norske_fiskere_skaffer_mat_til_Storbritannia_%28fo30141801260128%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   },
+   {
+    "source": "Wikimedia Commons",
+    "title": "Norske fiskere skaffer mat til Storbritannia (fo30141801260128).tif",
+    "author": "Riksarkivet / Backer, Ole Friele",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "page": "https://commons.wikimedia.org/wiki/File:Norske_fiskere_skaffer_mat_til_Storbritannia_(fo30141801260128).tif",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Norske_fiskere_skaffer_mat_til_Storbritannia_%28fo30141801260128%29.tif/lossy-page1-1280px-Norske_fiskere_skaffer_mat_til_Storbritannia_%28fo30141801260128%29.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Norske_fiskere_skaffer_mat_til_Storbritannia_%28fo30141801260128%29.tif/lossy-page1-1280px-Norske_fiskere_skaffer_mat_til_Storbritannia_%28fo30141801260128%29.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   }
+  ]
+ },
+ "sei": {
+  "name": "Panert sei med remulade",
+  "candidates": []
+ },
+ "fiskesuppe": {
+  "name": "Bergensk fiskesuppe",
+  "candidates": [
+   {
+    "source": "Wikimedia Commons",
+    "title": "02025 0353 Fish soup.jpg",
+    "author": "Marsilar",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:02025_0353_Fish_soup.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/02025_0353_Fish_soup.jpg/400px-02025_0353_Fish_soup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/02025_0353_Fish_soup.jpg/1280px-02025_0353_Fish_soup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   },
+   {
+    "source": "Wikimedia Commons",
+    "title": "Fish soup, Ibiza.jpg",
+    "author": "Gerda Arendt",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Fish_soup,_Ibiza.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Fish_soup%2C_Ibiza.jpg/400px-Fish_soup%2C_Ibiza.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Fish_soup%2C_Ibiza.jpg/1280px-Fish_soup%2C_Ibiza.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   },
+   {
+    "source": "Wikimedia Commons",
+    "title": "Fish soup by peach yeung 2020621.jpg",
+    "author": "Peachyeung316",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Fish_soup_by_peach_yeung_2020621.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Fish_soup_by_peach_yeung_2020621.jpg/400px-Fish_soup_by_peach_yeung_2020621.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Fish_soup_by_peach_yeung_2020621.jpg/1280px-Fish_soup_by_peach_yeung_2020621.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   }
+  ]
+ },
+ "fiskekaker": {
+  "name": "Fiskekaker med kokte grønnsaker",
+  "candidates": []
+ },
+ "fiskepudding": {
+  "name": "Fiskepudding med hvit saus",
+  "candidates": [
+   {
+    "source": "Wikimedia Commons",
+    "title": "Fiskepudding.jpg",
+    "author": "Jon-Eric Melsæter (Phunkstarr)",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Fiskepudding.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Fiskepudding.jpg/400px-Fiskepudding.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Fiskepudding.jpg/1280px-Fiskepudding.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   }
+  ]
+ },
+ "reketaco": {
+  "name": "Taco med scampi",
+  "candidates": []
+ },
+ "reker-brod": {
+  "name": "Rekefest med loff og majones",
+  "candidates": []
+ },
+ "tunfiskpasta": {
+  "name": "Pasta med tunfisk og tomat",
+  "candidates": []
+ },
+ "falafel": {
+  "name": "Falafel i pita med tzatziki",
+  "candidates": []
+ },
+ "omelett": {
+  "name": "Ovnsomelett med grønnsaker",
+  "candidates": []
+ },
+ "pizza": {
+  "name": "Hjemmelaget pizza",
+  "candidates": []
+ },
+ "pizza-pepperoni": {
+  "name": "Pizza med pepperoni",
+  "candidates": []
+ },
+ "pasta-pesto-veg": {
+  "name": "Pasta med pesto, tomat og mozzarella",
+  "candidates": []
+ },
+ "linsesuppe": {
+  "name": "Linsesuppe med tomat og kokos",
+  "candidates": []
+ },
+ "kikertgryte": {
+  "name": "Kikertgryte med spinat og ris",
+  "candidates": []
+ },
+ "vegetar-taco": {
+  "name": "Vegetartaco med bønner og søtpotet",
+  "candidates": []
+ },
+ "blomkalsuppe": {
+  "name": "Kremet blomkålsuppe",
+  "candidates": []
+ },
+ "grateng": {
+  "name": "Brokkoli- og blomkålgrateng",
+  "candidates": []
+ },
+ "shakshuka": {
+  "name": "Shakshuka med brød",
+  "candidates": []
+ },
+ "sotpotet-feta": {
+  "name": "Ovnsbakt søtpotet med kikerter og feta",
+  "candidates": []
+ },
+ "gronnsakswok": {
+  "name": "Grønnsakswok med egg og nudler",
+  "candidates": []
+ },
+ "tomatsuppe": {
+  "name": "Tomatsuppe med makaroni og egg",
+  "candidates": [
+   {
+    "source": "Wikimedia Commons",
+    "title": "Tomato soup.jpg",
+    "author": "Ukjent",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Tomato_soup.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Tomato_soup.jpg/400px-Tomato_soup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Tomato_soup.jpg/1280px-Tomato_soup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   },
+   {
+    "source": "Wikimedia Commons",
+    "title": "TomatoSoup HomeMade Mumbai.jpg",
+    "author": "Shah Naisargi",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:TomatoSoup_HomeMade_Mumbai.jpg",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/d/d7/TomatoSoup_HomeMade_Mumbai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "full": "https://upload.wikimedia.org/wikipedia/commons/d/d7/TomatoSoup_HomeMade_Mumbai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+   },
+   {
+    "source": "Wikimedia Commons",
+    "title": "Krasnoselsky District Depo Tri Vokzala 2023-06 1686842085.tif",
+    "author": "Artyom Svetlov",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Krasnoselsky_District_Depo_Tri_Vokzala_2023-06_1686842085.tif",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Krasnoselsky_District_Depo_Tri_Vokzala_2023-06_1686842085.tif/lossy-page1-1280px-Krasnoselsky_District_Depo_Tri_Vokzala_2023-06_1686842085.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "full": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Krasnoselsky_District_Depo_Tri_Vokzala_2023-06_1686842085.tif/lossy-page1-1280px-Krasnoselsky_District_Depo_Tri_Vokzala_2023-06_1686842085.tif.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+   }
+  ]
+ },
+ "vegetar-chili": {
+  "name": "Vegetarchili med bønner og mais",
+  "candidates": []
+ },
+ "soppasta": {
+  "name": "Kremet soppasta med parmesan",
+  "candidates": []
+ }
+}

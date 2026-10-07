@@ -1,10 +1,9 @@
 name: Oppdater tilbud
 
-# Fast kjøring er slått av til vi har avtale med Tjek om bruk av API-et.
-# Slå på igjen ved å legge til:
-#   schedule:
-#     - cron: '0 4,16 * * *' # 06:00 og 18:00 norsk sommertid
+# Henter nye tilbud hver søndag, når kjedene har publisert ukens aviser.
 on:
+  schedule:
+    - cron: '0 16 * * 0' # søndag 18:00 norsk sommertid (17:00 vintertid)
   workflow_dispatch:
 
 permissions:

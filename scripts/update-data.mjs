@@ -1,5 +1,5 @@
 // Henter ukens tilbud fra tilbudsavisene (Tjek / eTilbudsavis). Skriver data/offers.json.
-// NB: Tjek-API-et krever avtale med Tjek. Ikke kjør skriptet før avtalen er på plass.
+// NB: Tjek-API-et krever avtale med Tjek. Eieren har valgt å hente ukentlig mens vi venter på svar.
 // Kjør: node scripts/update-data.mjs
 import { writeFile, mkdir } from 'node:fs/promises';
 

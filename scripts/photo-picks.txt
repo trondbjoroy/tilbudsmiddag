@@ -1,0 +1,58 @@
+# id|pexels-id|slug|tittel|fotograf   (alternativ i neste kolonnegruppe)
+kylling-wok|37331002|delicious-stir-fried-noodles-with-chicken-and-vegetables|Delicious Stir-Fried Noodles with Chicken and Vegetables|Murat Bilgin|34599519|delicious-stir-fry-noodles-with-chicken-and-vegetables|Beatriz Haiana
+kylling-fajitas|32371273|grilled-chicken-fajitas-with-sizzling-vegetables|Grilled Chicken Fajitas with Sizzling Vegetables|DΛVΞ GΛRCIΛ|32371267|grilled-chicken-fajitas-with-fresh-peppers|DΛVΞ GΛRCIΛ
+ovnskylling-lar|4589138|cooked-chicken-with-potatoes-on-black-metal-tray|Cooked Chicken With Potatoes on Black Metal Tray|ArtHouse Studio|36480176|roasted-chicken-leg-with-vegetables-on-a-plate|Masuma Rahaman
+kylling-lar-ris|36275016|delicious-chicken-meal-with-rice-and-broccoli|Delicious Chicken Meal with Rice and Broccoli|Evans Joel|39083061|delicious-teriyaki-chicken-with-rice-and-vegetables|Zak H
+helstekt-kylling|5956831|roasted-chicken-and-potatoes-on-white-ceramic-plate|Roasted Chicken and Potatoes on White Ceramic Plate|KATRIN BOLOVTSOVA|10821324|roasted-chicken-potatoes-and-green-beans|furkanfdemir
+kylling-pasta-pesto|34303327|grilled-chicken-with-pesto-pasta-in-tacna-cafe|Grilled Chicken with Pesto Pasta|Ruben Dao Cuentas|38570763|delicious-spaghetti-pesto-dish-on-elegant-plate|Anya Dunes
+kyllingburger|37079592|crispy-chicken-burger-with-purple-coleslaw-in-istanbul|Crispy Chicken Burger with Purple Coleslaw|Kerim Eveyik|20115302|burger-and-fries|Amit Fulwaria
+pulled-chicken-taco|36498697|delicious-soft-tacos-with-avocado-and-chicken|Delicious Soft Tacos with Avocado and Chicken|DΛVΞ GΛRCIΛ|39960349|close-up-of-chicken-tacos-with-avocado-and-salsa|Sanusi Jabir
+pulled-pork-burger|33706251|delicious-pulled-pork-burger-with-crispy-coleslaw|Delicious Pulled Pork Burger with Crispy Coleslaw|Valeria Boltneva||
+kyllingsuppe|34326228|warm-chicken-soup-in-white-serving-bowl|Warm Chicken Soup in White Serving Bowl|Anhelina Vasylyk|34821965|hearty-vegetable-and-chicken-soup-with-corn|lucia photography in progress cano
+taco|6400005|top-view-of-mexican-food|Top View of Mexican Food|alleksana|36498700|delicious-trio-of-tacos-ready-to-serve|DΛVΞ GΛRCIΛ
+spaghetti-bolognese|30406652|delicious-spaghetti-bolognese-with-garlic-bread|Delicious Spaghetti Bolognese with Garlic Bread|Ruslan Kruglov|4349774|pasta-bolognaise-served-on-plate-on-table|Ketut Subiyanto
+lasagne|33312938|delicious-homemade-lasagna-with-tomato-sauce|Delicious Homemade Lasagna with Tomato Sauce|Büşra Yurt|34474031|delicious-cheesy-lasagna-bite-on-fork|Laura oliveira
+hamburger|33467710|delicious-cheeseburger-with-toppings-on-wooden-board|Delicious Cheeseburger with Toppings on Wooden Board|Vladislav Boiko|8305726|homemade-burger-on-wooden-plate|Ricardo Suarez
+kjottboller-tomatsaus|31284951|delicious-spaghetti-with-meatballs-and-basil-garnish|Delicious Spaghetti with Meatballs and Basil Garnish|Mahmoud Salem|9617397|spaghetti-with-meatballs-on-ceramic-plate|Cree Payton
+kjottboller-brun|30335689|gourmet-dish-with-mashed-potatoes-and-meatballs|Gourmet Dish with Mashed Potatoes and Meatballs|Valeria Boltneva|20323448|meal-with-meatballs|Valeria Boltneva
+kjottkaker|30335683|gourmet-dish-with-mashed-potatoes-and-sauce|Gourmet Dish with Mashed Potatoes and Sauce|Valeria Boltneva||
+karbonadedeig-wok|34714656|delicious-thai-basil-beef-with-fried-egg-and-rice|Delicious Thai Basil Beef with Fried Egg and Rice|UNDO KIM|35228295|delicious-beef-fried-rice-with-chopsticks|黃Lunny 設計
+karbonade-burger|34491414|delicious-cheeseburger-with-lettuce-and-onions|Delicious Cheeseburger with Lettuce and Onions|ufuk iseloglu|997660|cooked-food-and-white-plate|Johnny Willz
+chili-con-carne|15881322|chili-con-carne-stew|Chili Con Carne Stew|Julias Torten und Törtchen|14866629|hand-holding-a-bowl-with-chilli-con-carne|Nadin Sh
+biffwok|38485702|delicious-asian-beef-noodle-dish-in-sunlight|Delicious Asian Beef Noodle Dish in Sunlight|Larysa Stratiichuk|10692546|noodle-dish-on-black-sizzling-plate|Yang Hao
+storfegryte|38441086|traditional-hungarian-goulash-in-red-pot|Traditional Hungarian Goulash in Red Pot|kirpiklipencere|38750885|german-beef-stew-with-croquettes-and-fresh-veggies|Rufina Rusakova
+svinefilet|36183183|gourmet-steak-with-creamy-mushroom-sauce|Gourmet Steak with Creamy Mushroom Sauce|Valeria Boltneva|1352269|marinated-meat-with-sauce-on-plate|Lukas Blazek
+svin-sweet-sour|5848495|sweet-and-sour-pork-with-wooden-chopsticks-on-white-ceramic-bowl|Sweet and Sour Pork|Polina Tankilevitch|7949919|pork-with-bell-peppers-and-sauce|Daisuke Fujita
+polse-potetstappe|18265288|mashed-potatoes-sausage-and-vegetables-on-a-plate|Mashed Potatoes, Sausage and Vegetables on a Plate|Nadin Sh|37275051|delicious-sausage-and-mash-lunch-spread|cami
+polsegryte|38770083|delicious-hearty-stew-with-sausages-and-bread|Delicious Hearty Stew with Sausages and Bread|FOX|37271311|traditional-sauerkraut-stew-with-sausage-in-bowl|Veronika Benz
+carbonara|31779533|delicious-creamy-spaghetti-carbonara-dish|Delicious Creamy Spaghetti Carbonara Dish|Adriano Bragi||
+spareribs|32538759|delicious-barbecue-ribs-with-salad-and-fries|Delicious Barbecue Ribs with Salad and Fries|Cristhian David Duarte|37025108|delicious-colombian-pork-ribs-with-potatoes|Christian Bolaños
+baconpasta|28978147|delicious-creamy-spaghetti-carbonara-dish|Delicious Creamy Spaghetti Carbonara Dish|Emma Stinebaugh||
+lammeskiver|17988080|wooden-plate-of-roasted-lamb-chops-with-vegetables|Wooden Plate of Roasted Lamb Chops with Vegetables|Mayumi Maciel||
+lammegryte|37309226|delicious-lamb-curry-in-decorative-bowl|Delicious Lamb Curry in Decorative Bowl|Muhammad Khawar Nazir|32986465|delicious-lamb-curry-in-stainless-steel-bowl|J KREATOR
+lammewok|27588091|a-black-dish-with-meat-and-vegetables-on-top|A Black Dish with Meat and Vegetables|Collab Media|31088694|cooking-beef-stir-fry-in-a-home-kitchen|Ricky Esquivel
+ovnslaks|34624944|baked-salmon-with-onions-and-potatoes-in-oven|Baked Salmon with Onions and Potatoes|Ayşe Nur|5741440|baked-salmon-in-ceramic-plate|Bronze Digitals
+laks-pasta|38326962|delicious-penne-and-fusilli-pasta-with-salmon|Delicious Penne and Fusilli Pasta with Salmon|Luca Volpe Productions||
+orret|27612526|a-plate-with-a-fish-and-potatoes-on-it|A Plate with a Fish and Potatoes|Collab Media|15059689|roast-fish-with-potatoes|Collab Media
+torsk|38995738|gourmet-cod-with-mushrooms-and-peas|Gourmet Cod with Mushrooms and Peas|Nadin Sh||
+sei|36863865|crispy-fried-fish-with-tartare-sauce-on-plate|Crispy Fried Fish with Tartare Sauce on Plate|Merve Gülhan|12310564|a-close-up-shot-of-fish-and-chips|Lloyd Mitchel Guanzon
+fiskekaker|8732583|a-close-up-shot-of-fried-fish-cakes-on-a-wooden-board|Fried Fish Cakes on a Wooden Board|Andi Farruku||
+reketaco|38895472|delicious-shrimp-tacos-with-lime-and-salsa|Delicious Shrimp Tacos with Lime and Salsa|Mike C|10296433|close-up-shot-of-shrimp-tacos|Shameel mukkath
+reker-brod|20593399|shrimps-in-bowl|Shrimps in Bowl|Jose Prada||
+falafel|12814859|pita-bread-and-falafels-on-tray-with-vegetables|Pita Bread and Falafels on Tray with Vegetables|Nadin Sh|6275219|pitas-and-falafel-on-black-surface|Nataliya Vaitkevich
+omelett|5639255|a-close-up-shot-of-a-frittata-in-a-skillet|A Frittata in a Skillet|Shameel mukkath|33922142|vegetable-frittata-with-fresh-bread-on-marble|Anya Dunes
+pizza|33592996|delicious-vegetable-pizza-on-rustic-wooden-table|Delicious Vegetable Pizza on Rustic Wooden Table|Anhelina Vasylyk||
+pizza-pepperoni|12557605|a-pepperoni-pizza-on-the-table|A Pepperoni Pizza on the Table|Alejandro Aznar|30948829|close-up-of-pepperoni-pizza-with-crispy-crust|damla selen demir
+laks-teriyaki|27672770|a-plate-with-salmon-and-rice-on-it|A Plate with Salmon and Rice|Nadin Sh|33673809|delicious-salmon-dinner-with-rice-and-potatoes|pedro furtado
+koteletter|28996273|grilled-pork-chop-with-potatoes-and-rosemary|Grilled Pork Chop with Potatoes and Rosemary|Nadin Sh||
+pasta-pesto-veg|18171195|pasta-with-tomatoes-and-cheese|Pasta with Tomatoes and Cheese|Saron tube|18743147|pasta-dish-in-a-plate|Nadin Sh
+linsesuppe|29850843|warm-and-hearty-lentil-soup-in-terra-cotta-bowl|Warm and Hearty Lentil Soup in Terra Cotta Bowl|Snappr|35375003|delicious-indian-lentil-soup-with-bread|Justin Thompson
+kikertgryte|9287035|close-up-of-chana-masala|Close-up of Chana Masala|Muhammad Khawar Nazir||
+vegetar-taco|8230030|close-up-shot-of-tacos-on-a-wooden-tray|Tacos on a Wooden Tray|Los Muertos Crew|4958521|cooked-food-on-the-wooden-tray|ROMAN ODINTSOV
+blomkalsuppe|19367737|two-bowls-of-cauliflower-soup|Two Bowls of Cauliflower Soup|Zehra Yılmaz||
+grateng|33042510|golden-baked-cheese-and-potato-casserole|Golden Baked Cheese Casserole|Meliha Ljaljic||
+shakshuka|30892286|shakshuka-in-skillet-with-bread-by-window|Shakshuka in Skillet with Bread|Oleksandr Plakhota|29843063|delicious-shakshuka-in-a-cast-iron-skillet|Valeria Boltneva
+gronnsakswok|37165674|stir-fried-noodles-with-vegetables|Stir-Fried Noodles with Vegetables|Pop Shubhojit Das|28895969|delicious-stir-fried-noodles-with-vegetables|Nano Erdozain
+tomatsuppe|17402671|tomato-soup-in-plate-on-table|Tomato Soup in Plate on Table|Nadin Sh||
+vegetar-chili|28286173|vegan-black-bean-chilli|Vegan Black Bean Chilli|Nic Wood||
+soppasta|34380282|delicious-pasta-with-creamy-mushroom-sauce|Delicious Pasta with Creamy Mushroom Sauce|mustafa türkeri||
