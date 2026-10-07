@@ -2,6 +2,7 @@
 // /oppskrift/<navn>/, /oppskrifter/, oppskriftslisten på forsiden,
 // sitemap.xml, robots.txt og 404.html.
 // Kjør etter endringer i oppskriftene: node scripts/build-pages.mjs
+import { existsSync } from 'node:fs';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { RECIPES } from '../assets/recipes.js';
 import { INGREDIENTS } from '../assets/ingredients.js';
@@ -18,6 +19,8 @@ const DIET_SCHEMA = { glutenfri: 'https://schema.org/GlutenFreeDiet', laktosefri
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const url = (r) => `/oppskrift/${slugify(r.name)}/`;
+// Bilde av retten, eller null hvis det ikke er laget ennå.
+const img = (r) => (existsSync(new URL(`../assets/img/${slugify(r.name)}.webp`, import.meta.url)) ? `/assets/img/${slugify(r.name)}.webp` : null);
 const jsonLd = (obj) => `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, '\\u003c')}</script>`;
 
 function ingredientText([key, qty, unit, note]) {
@@ -34,7 +37,7 @@ function describe(r) {
   return `${r.name} – ${kind} som tar ${r.time} minutter og gir 4 porsjoner. Se oppskriften og hvor ingrediensene er billigst denne uken.`;
 }
 
-function page({ title, description, path, body, head = '', noindex = false }) {
+function page({ title, description, path, body, head = '', noindex = false, image = '/assets/og.png' }) {
   return `<!doctype html>
 <html lang="nb">
 <head>
@@ -49,7 +52,7 @@ function page({ title, description, path, body, head = '', noindex = false }) {
   <meta property="og:url" content="${SITE}${path}">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
-  <meta property="og:image" content="${SITE}/assets/og.png">
+  <meta property="og:image" content="${SITE}${image}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#c8442b">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -96,7 +99,8 @@ const crumbLd = (items) => ({
 });
 
 function recipeCard(r) {
-  return `<a class="rcard" href="${url(r)}" data-cat="${r.cat}"><span class="cat">${esc(CATS[r.cat])}</span><span class="rcard-name">${esc(r.name)}</span><span class="time">${r.time} min</span></a>`;
+  const pic = img(r) ? `<img src="${img(r)}" alt="" width="1024" height="768" loading="lazy" decoding="async">` : '';
+  return `<a class="rcard" href="${url(r)}" data-cat="${r.cat}">${pic}<span class="cat">${esc(CATS[r.cat])}</span><span class="rcard-name">${esc(r.name)}</span><span class="time">${r.time} min</span></a>`;
 }
 
 function recipePage(r) {
@@ -111,6 +115,7 @@ function recipePage(r) {
     description,
     inLanguage: 'nb-NO',
     author: { '@type': 'Organization', name: 'Tilbudsmiddag', url: SITE + '/' },
+    ...(img(r) ? { image: [SITE + img(r)] } : {}),
     recipeCategory: 'Middag',
     recipeCuisine: 'Norsk',
     totalTime: `PT${r.time}M`,
@@ -124,6 +129,7 @@ function recipePage(r) {
   };
   const body = `${crumbs(trail)}
     <article class="recipe-page" data-cat="${r.cat}">
+      ${img(r) ? `<img class="recipe-img" src="${img(r)}" alt="${esc(r.name)}" width="1024" height="768" fetchpriority="high">` : ''}
       <header class="recipe-head">
         <div class="card-top"><span class="cat">${esc(CATS[r.cat])}</span><span class="time">${r.time} min</span>${r.tags.filter((t) => TAGS[t]).map((t) => `<span class="tag">${TAGS[t]}</span>`).join('')}</div>
         <h1>${esc(r.name)}</h1>
@@ -142,7 +148,7 @@ function recipePage(r) {
       </div>
     </article>
     ${related.length ? `<section class="related"><h2>Flere oppskrifter: ${esc(CATS[r.cat].toLowerCase())}</h2><div class="rcards">${related.map(recipeCard).join('')}</div></section>` : ''}`;
-  return page({ title: `${r.name} – oppskrift | Tilbudsmiddag`, description, path, body, head: jsonLd(ld) + jsonLd(crumbLd(trail)) });
+  return page({ title: `${r.name} – oppskrift | Tilbudsmiddag`, description, path, body, head: jsonLd(ld) + jsonLd(crumbLd(trail)), ...(img(r) ? { image: img(r) } : {}) });
 }
 
 function byCategory() {
@@ -191,6 +197,11 @@ const index = await readFile(indexUrl, 'utf8');
 const marked = index.replace(/<!-- RECIPES:START -->[\s\S]*<!-- RECIPES:END -->/, `<!-- RECIPES:START -->\n      <div class="rlists">\n${homeList()}\n      </div>\n<!-- RECIPES:END -->`);
 if (marked === index && !index.includes('<!-- RECIPES:START -->')) throw new Error('Fant ikke RECIPES-markørene i index.html');
 await writeFile(indexUrl, marked);
+
+// Liste over bildene som finnes, så appen ikke ber om bilder som mangler.
+await writeFile(new URL('assets/images.js', ROOT), `// Laget av scripts/build-pages.mjs. Ikke rediger.
+export const IMAGES = new Set(${JSON.stringify(RECIPES.filter(img).map((r) => slugify(r.name)))});
+`);
 
 const urls = ['/', '/oppskrifter/', ...RECIPES.map(url)];
 await writeFile(

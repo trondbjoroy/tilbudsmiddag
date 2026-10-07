@@ -1,6 +1,7 @@
 import { INGREDIENTS } from './ingredients.js';
 import { RECIPES } from './recipes.js';
 import { slugify } from './slug.js';
+import { IMAGES } from './images.js';
 
 const DAYS = ['Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag', 'Søndag'];
 const DAY_MS = 864e5;
@@ -217,6 +218,7 @@ function cardHtml(e, d, i) {
   const highlights = e.items.filter((it) => it.best && it.def.w >= 1).slice(0, 2);
   return `<article class="card" data-cat="${r.cat}">
     <button type="button" class="card-hit" data-open="${d}:${i}" aria-label="Åpne ${esc(r.name)}"></button>
+    ${IMAGES.has(slugify(r.name)) ? `<img class="card-img" src="/assets/img/${slugify(r.name)}.webp" alt="" width="1024" height="768" loading="lazy" decoding="async">` : ''}
     <div class="card-top"><span class="cat">${CATS[r.cat]}</span><span class="time">${r.time} min</span></div>
     <h3>${esc(r.name)}</h3>${e.repeat ? '<p class="repeat">Gjentas – få retter passer filtrene</p>' : ''}
     <ul class="deals">${highlights.map((it) => `<li><span>${esc(it.def.name)}</span> <b>${priceLabel(it.best)}</b> ${chainBadge(it.best.chain)}</li>`).join('') || '<li class="muted">Ingen hovedråvare på tilbud</li>'}</ul>
@@ -340,6 +342,7 @@ function openRecipe(key) {
   const stores = oneStoreTable(e);
 
   $('#dlg-body').innerHTML = `
+    ${IMAGES.has(slugify(r.name)) ? `<img class="dlg-img" src="/assets/img/${slugify(r.name)}.webp" alt="${esc(r.name)}" width="1024" height="768">` : ''}
     <header class="dlg-head" data-cat="${r.cat}">
       <div class="card-top"><span class="cat">${CATS[r.cat]}</span><span class="time">${r.time} min</span>${r.tags.filter((t) => DIETS[t]).map((t) => `<span class="tag">${DIETS[t]}</span>`).join('')}</div>
       <h2 id="dlg-title">${esc(r.name)}</h2>
