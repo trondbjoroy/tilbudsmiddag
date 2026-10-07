@@ -29,7 +29,9 @@
 }
 :root[data-theme="dark"] {
   --bg: #17140f; --surface: #221e18; --surface-2: #2b261f; --ink: #f2ece3; --muted: #a99e90;
-  --line: #3a342b; --accent: #ec6a4f; --save: #6fd19a; --save-bg: #1d3427; color-scheme: dark;
+  --line: #3a342b; --accent: #ec6a4f; --save: #6fd19a; --save-bg: #1d3427;
+  --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 4px 14px rgb(0 0 0 / 30%);
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -52,6 +54,13 @@ a { color: inherit; }
 .nav a { text-decoration: none; padding: 8px 12px; border-radius: 999px; font-size: 0.95rem; white-space: nowrap; }
 .nav a:hover { background: var(--surface-2); }
 .nav-ad { border: 1px solid var(--line); }
+.nav { align-items: center; flex-wrap: nowrap; }
+@media (max-width: 420px) { .hide-xs { display: none; } }
+.theme-toggle { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: none; color: var(--ink); cursor: pointer; display: inline-grid; place-items: center; padding: 0; }
+.theme-toggle:hover { background: var(--surface-2); }
+.theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle .i-sun, .theme-toggle[data-mode="dark"] .i-moon { display: none; }
+.theme-toggle[data-mode="dark"] .i-sun { display: block; }
 @media (max-width: 560px) { .nav a:not(.nav-ad) { display: none; } .nav a { font-size: 0.85rem; padding: 6px 10px; } .logo { font-size: 1.2rem; } }
 
 /* Intro */
