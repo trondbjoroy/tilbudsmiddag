@@ -178,7 +178,7 @@ function overviewPage() {
   const list = { '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: RECIPES.map((r, i) => ({ '@type': 'ListItem', position: i + 1, url: SITE + url(r) })) };
   return page({
     title: 'Middagsoppskrifter – enkle middager for hele uken | Tilbudsmiddag',
-    description: `${RECIPES.length} enkle middagsoppskrifter med kylling, kjøttdeig, fisk, lam og vegetar. Se hvor ingrediensene er på tilbud denne uken.`,
+    description: 'Middagsoppskrifter for hele uken med ingredienser som er på tilbud denne uken.',
     path: '/oppskrifter/',
     body,
     head: jsonLd(list) + jsonLd(crumbLd(trail)),

@@ -369,7 +369,7 @@ function openRecipe(key) {
         <p class="page-link"><a href="/oppskrift/${slugify(r.name)}/">Åpne oppskriften som egen side →</a></p>
       </section>
     </div>`;
-  $('#dlg').dataset.open = key;
+  $('#dlg').dataset.recipe = key;
   window.posthog?.capture('recipe_opened', { recipe: r.id, source: d != null ? 'ukemeny' : 'lenke', portions: state.portions });
   if (!$('#dlg').open) $('#dlg').showModal();
 }
@@ -414,7 +414,7 @@ function onClick(ev) {
   } else if (t.dataset.portions) {
     state.portions = Math.min(12, Math.max(1, state.portions + Number(t.dataset.portions)));
     update();
-    const open = $('#dlg').dataset.open;
+    const open = $('#dlg').dataset.recipe;
     if ($('#dlg').open && open) openRecipe(open);
   } else if (t.dataset.open) {
     openRecipe(t.dataset.open);
@@ -422,7 +422,7 @@ function onClick(ev) {
     state = { ...DEFAULTS, week: state.week, portions: state.portions, perDay: state.perDay };
     update();
   } else if ('copy' in t.dataset) {
-    const copied = entryFor($('#dlg').dataset.open).e;
+    const copied = entryFor($('#dlg').dataset.recipe).e;
     window.posthog?.capture('shopping_list_copied', { recipe: copied.recipe.id });
     navigator.clipboard.writeText(shoppingText(copied)).then(() => {
       t.textContent = 'Kopiert!';
