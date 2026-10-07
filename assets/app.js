@@ -225,6 +225,7 @@ function cardHtml(e, d, i) {
     <div class="card-top"><span class="cat">${CATS[r.cat]}</span><span class="time">${r.time} min</span></div>
     <h3>${esc(r.name)}</h3>${e.repeat ? '<p class="repeat">Gjentas – få retter passer filtrene</p>' : ''}
     <ul class="deals">${highlights.map((it) => `<li><span>${esc(it.def.name)}</span> <b>${priceLabel(it.best)}</b> ${chainBadge(it.best.chain)}</li>`).join('') || '<li class="muted">Ingen hovedråvare på tilbud</li>'}</ul>
+    ${e.cost ? `<p class="card-price" title="Pris for varene som er på tilbud, for ${state.portions} porsjoner. Varer som ikke er på tilbud kommer i tillegg."><b>ca. ${kr(Math.round(e.cost))}</b> <span>for varene på tilbud</span></p>` : ''}
     <div class="card-foot">
       <span class="pill">${e.onOffer} av ${e.need} varer på tilbud</span>
       ${e.saved >= 5 ? `<span class="save">Spar ca. ${kr(Math.round(e.saved))}</span>` : ''}
