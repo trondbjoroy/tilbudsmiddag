@@ -172,7 +172,7 @@ function recipePage(r) {
     recipeYield: '4 porsjoner',
     keywords: [r.name, 'middag', 'middagstips', CATS[r.cat].toLowerCase(), ...r.tags.map((t) => TAGS[t]?.toLowerCase()).filter(Boolean)].join(', '),
     recipeIngredient: r.ing.map(ingredientText),
-    recipeInstructions: r.steps.map((text, i) => ({ '@type': 'HowToStep', position: i + 1, text })),
+    recipeInstructions: r.steps.map((text, i) => ({ '@type': 'HowToStep', position: i + 1, text, url: `${SITE}${path}#steg-${i + 1}` })),
     ...(r.tags.some((t) => DIET_SCHEMA[t]) || r.cat === 'vegetar'
       ? { suitableForDiet: [...r.tags.filter((t) => DIET_SCHEMA[t]).map((t) => DIET_SCHEMA[t]), ...(r.cat === 'vegetar' ? ['https://schema.org/VegetarianDiet'] : [])] }
       : {}),
@@ -193,7 +193,7 @@ function recipePage(r) {
         </section>
         <section>
           <h2>Slik gjør du</h2>
-          <ol class="steps">${r.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>
+          <ol class="steps">${r.steps.map((s, i) => `<li id="steg-${i + 1}">${esc(s)}</li>`).join('')}</ol>
         </section>
       </div>
     </article>
