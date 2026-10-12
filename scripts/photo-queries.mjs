@@ -65,4 +65,12 @@ export const QUERIES = {
   'tomatsuppe': { pexels: 'tomato soup egg', commons: 'tomatsuppe' },
   'vegetar-chili': { pexels: 'vegetarian chili beans' },
   'soppasta': { pexels: 'creamy mushroom pasta' },
+  'svinekjottdeig-pasta': { pexels: 'creamy pasta ground pork leek' },
+  'nakkekoteletter-loksaus': { pexels: 'pork chops onion gravy potatoes' },
+  'rokt-svinekam': { pexels: 'smoked pork loin mashed rutabaga' },
+  'svineknoke': { pexels: 'pork knuckle sauerkraut potatoes' },
+  'kyllinglar-sotpotet': { pexels: 'roasted chicken thighs sweet potato tzatziki' },
+  'kyllingklubber-soya': { pexels: 'soy glazed chicken drumsticks rice' },
+  'bacalao': { pexels: 'bacalao cod stew tomato potatoes' },
+  'gresskarsuppe': { pexels: 'pumpkin soup' },
 };

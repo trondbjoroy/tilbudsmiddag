@@ -34,6 +34,8 @@ export const INGREDIENTS = {
   spareribs: { name: 'Spareribs', w: 3, match: re('spareribs') },
   bacon: { name: 'Bacon', w: 2, match: re('bacon'), not: re('tubeost|smårett|omelett') },
   polser: { name: 'Pølser', w: 3, match: re('pølse|wiener|falukorv|bratwurst'), not: re('brød|ridderheims|pekan') },
+  svinekam: { name: 'Svinekam', w: 3, match: re('svinekam') },
+  svineknoke: { name: 'Svineknoke', w: 3, match: re('svineknoke') },
 
   // Lam
   farikalkjott: { name: 'Fårikålkjøtt', w: 3, match: re('fårikål'), not: re('poteter') },
@@ -51,6 +53,7 @@ export const INGREDIENTS = {
   reker: { name: 'Reker', w: 3, match: re(`${B}reker${E}`), not: re('salat') },
   scampi: { name: 'Scampi', w: 3, match: re('scampi') },
   tunfisk: { name: 'Tunfisk på boks', w: 2, match: re('tunfisk'), not: re('dressing') },
+  klippfisk: { name: 'Bacalaofisk/klippfisk', w: 3, match: re('bacala?o?fisk|klippfisk') },
 
   // Vegetar-proteiner
   egg: { name: 'Egg', w: 2, match: re(`${B}(frokost|gårds)?egg${E}|egg \\d+ ?pk|egg frittgående`) },
@@ -85,6 +88,7 @@ export const INGREDIENTS = {
   purre: { name: 'Purreløk', w: 0.5, match: re(`purre(løk)?${E}`), not: re('tomat') },
   sitron: { name: 'Sitron', w: 0.3, match: re(`${B}sitron(er)?${E}`), not: re('grønnsaker') },
   wokgronnsaker: { name: 'Wokgrønnsaker', w: 1, match: re('wokgrønnsaker|findus wok') },
+  gresskar: { name: 'Gresskar', w: 1, match: re(`${B}gresskar${E}`) },
 
   // Karbohydrater og brød
   pasta: { name: 'Pasta', w: 1, match: re('spaghetti|penne|fettuccine|tagliatelle|tortiglioni|gigli|pappardelle|rana pasta|coop pasta|makaroni'), not: re('saus|bowl|arrabbiata|salat') },

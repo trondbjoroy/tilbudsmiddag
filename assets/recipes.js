@@ -340,4 +340,45 @@ export const RECIPES = [
     ing: [['pasta', 400, 'g'], ['champignon', 400, 'g'], ['flote', 3, 'dl'], ['parmesan', 60, 'g'], ['hvitlok', 2, 'fedd'], ['smor', 2, 'ss'], ['salt', null, ''], ['pepper', null, '']],
     steps: ['Kok pastaen.', 'Skjær soppen i skiver og stek den gyllen i smør med hvitløk.', 'Hell på fløte og kok sausen litt inn.', 'Vend inn pasta og parmesan. Smak til med salt og pepper.'],
   },
+  // ---------- Uke 42 ----------
+  {
+    id: 'svinekjottdeig-pasta', name: 'Kremet pasta med svinekjøttdeig og purre', cat: 'svin', time: 25, tags: ['barn'],
+    ing: [['svinekjottdeig', 500, 'g'], ['pasta', 400, 'g'], ['purre', 1, 'stk'], ['flote', 3, 'dl'], ['tomatpure', 2, 'ss'], ['hvitlok', 2, 'fedd'], ['parmesan', 40, 'g'], ['olje', 1, 'ss'], ['salt', null, ''], ['pepper', null, '']],
+    steps: ['Kok pastaen.', 'Skjær purren i tynne ringer.', 'Brun kjøttdeigen i olje. Tilsett purre og hvitløk og stek i 3 minutter.', 'Rør inn tomatpuré og fløte. Småkok i 5 minutter.', 'Smak til med salt og pepper. Vend inn pastaen og server med revet parmesan.'],
+  },
+  {
+    id: 'nakkekoteletter-loksaus', name: 'Nakkekoteletter med løksaus og poteter', cat: 'svin', time: 35, tags: ['barn'],
+    ing: [['koteletter', 800, 'g', 'nakkekoteletter'], ['lok', 3, 'stk'], ['poteter', 1, 'kg'], ['erter', 300, 'g'], ['mel', 2, 'ss'], ['buljong', 1, 'terning'], ['vann', 4, 'dl'], ['smor', 2, 'ss'], ['salt', null, ''], ['pepper', null, '']],
+    steps: ['Kok potetene.', 'Krydre kotelettene med salt og pepper. Stek dem i smør, 4–5 minutter på hver side. Legg dem på et fat.', 'Skjær løken i båter og stek den myk i samme panne.', 'Strø over mel. Rør inn vann og buljong og kok sausen i 5 minutter.', 'Legg kotelettene i sausen og varm dem i 3 minutter. Server med poteter og erter.'],
+  },
+  {
+    id: 'rokt-svinekam', name: 'Røkt svinekam med rotmos', cat: 'svin', time: 120, tags: ['helg', 'glutenfri'],
+    ing: [['svinekam', 1.3, 'kg', 'røkt, med ben'], ['rotgronnsaker', 800, 'g', 'kålrot og gulrot'], ['poteter', 500, 'g'], ['smor', 3, 'ss'], ['melk', 1, 'dl'], ['vann', 2, 'dl'], ['pepper', null, '']],
+    steps: ['Sett ovnen på 160 °C.', 'Legg kammen i en ildfast form og hell over vannet. Stek i cirka 1,5 time, til kjernetemperaturen er 68 °C.', 'Skrell og del rotgrønnsaker og poteter. Kok dem møre i usaltet vann i 20 minutter.', 'Hell av vannet. Mos med smør og melk, og smak til med pepper.', 'La kjøttet hvile i 10 minutter. Skjær det i skiver og server med rotmosen.'],
+  },
+  {
+    id: 'svineknoke', name: 'Svineknoke med surkål og poteter', cat: 'svin', time: 180, tags: ['helg', 'laktosefri'],
+    ing: [['svineknoke', 1.3, 'kg', 'lettsaltet'], ['kal', 1, 'kg', 'hodekål'], ['poteter', 1, 'kg'], ['eddik', 3, 'ss'], ['sukker', 2, 'ss'], ['krydder', 2, 'ts', 'karve'], ['sennep', null, '', 'til servering'], ['vann', null, ''], ['salt', null, '']],
+    steps: ['Legg knoken i en stor kjele og dekk den med vann. Kok under lokk i 2,5 time, til kjøttet slipper beinet.', 'Strimle kålen. Kok den med karve og 2 dl kraft fra knoken i 30 minutter.', 'Smak til kålen med eddik, sukker og salt.', 'Kok potetene.', 'Server knoken med surkål, poteter og sennep.'],
+  },
+  {
+    id: 'kyllinglar-sotpotet', name: 'Kyllinglårfilet i ovn med søtpotet og tzatziki', cat: 'kylling', time: 40, tags: ['barn'],
+    ing: [['kyllinglarfilet', 700, 'g'], ['sotpotet', 800, 'g'], ['paprika', 2, 'stk'], ['rodlok', 1, 'stk'], ['tzatziki', 2, 'dl'], ['sitron', 1, 'stk'], ['olivenolje', 3, 'ss'], ['krydder', 2, 'ts', 'oregano og paprikapulver'], ['salt', null, ''], ['pepper', null, '']],
+    steps: ['Sett ovnen på 220 °C.', 'Skjær søtpotet, paprika og rødløk i biter.', 'Legg grønnsakene og kyllingen i en langpanne. Vend alt med olje, krydder, salt og pepper.', 'Stek i 30 minutter til kyllingen er gjennomstekt.', 'Press over sitron og server med tzatziki.'],
+  },
+  {
+    id: 'kyllingklubber-soya', name: 'Ovnsbakte kyllingklubber med soyaglasur og ris', cat: 'kylling', time: 50, tags: ['barn', 'laktosefri'],
+    ing: [['kyllingklubber', 1.2, 'kg'], ['soyasaus', 4, 'ss'], ['sukker', 2, 'ss', 'eller honning'], ['hvitlok', 2, 'fedd'], ['ingefaer', 1, 'ss', 'revet'], ['ris', 4, 'dl'], ['agurk', 1, 'stk'], ['olje', 1, 'ss']],
+    steps: ['Sett ovnen på 200 °C.', 'Rør sammen soyasaus, sukker, revet hvitløk, ingefær og olje.', 'Vend kyllingklubbene i marinaden og legg dem i en ildfast form.', 'Stek i 40 minutter. Pensle med saus fra formen et par ganger.', 'Kok risen. Server kyllingen med ris og agurkskiver.'],
+  },
+  {
+    id: 'bacalao', name: 'Bacalao med poteter og paprika', cat: 'fisk', time: 60, tags: ['glutenfri', 'laktosefri'],
+    ing: [['klippfisk', 800, 'g', 'bacalaofisk, utvannet'], ['poteter', 1, 'kg'], ['lok', 2, 'stk'], ['paprika', 2, 'stk'], ['hakkedetomater', 2, 'bokser'], ['hvitlok', 3, 'fedd'], ['chili', 1, 'stk'], ['olivenolje', 1, 'dl'], ['vann', 2, 'dl']],
+    steps: ['Skjær fisken i store biter.', 'Skrell potetene og skjær dem i skiver. Skjær løk og paprika i strimler.', 'Legg poteter, løk, paprika, hvitløk, chili og fisk lagvis i en vid gryte.', 'Hell over tomater, olivenolje og vann.', 'Legg på lokk og småkok i 40 minutter, til potetene er møre. Ikke rør i gryta.'],
+  },
+  {
+    id: 'gresskarsuppe', name: 'Gresskarsuppe med kokos og ingefær', cat: 'vegetar', time: 40, tags: ['glutenfri', 'laktosefri'],
+    ing: [['gresskar', 1.2, 'kg'], ['lok', 1, 'stk'], ['gulrot', 2, 'stk'], ['hvitlok', 2, 'fedd'], ['ingefaer', 1, 'ss', 'revet'], ['kokosmelk', 1, 'boks'], ['buljong', 1, 'terning', 'grønnsaksbuljong'], ['vann', 7, 'dl'], ['olje', 1, 'ss'], ['salt', null, '']],
+    steps: ['Skrell gresskaret, fjern kjernene og skjær det i terninger.', 'Stek hakket løk, gulrot, hvitløk og ingefær i olje i 3 minutter.', 'Tilsett gresskar, vann og buljong. Småkok i 20 minutter, til alt er mørt.', 'Hell i kokosmelken og kjør suppen jevn med en stavmikser.', 'Smak til med salt og server.'],
+  },
 ];

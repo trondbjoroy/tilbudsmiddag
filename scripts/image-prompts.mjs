@@ -68,4 +68,12 @@ export const PROMPTS = {
   'tomatsuppe': 'Norwegian tomato soup with macaroni and halved boiled eggs in a bowl.',
   'vegetar-chili': 'Vegetarian chili with beans, sweet corn and bell pepper in tomato sauce, white rice.',
   'soppasta': 'Creamy mushroom pasta with sliced mushrooms and grated parmesan.',
+  'svinekjottdeig-pasta': 'Creamy pasta with browned ground pork, sliced leek and a light tomato cream sauce, grated parmesan on top.',
+  'nakkekoteletter-loksaus': 'Pan fried pork neck chops in brown onion gravy, boiled potatoes and green peas on the side.',
+  'rokt-svinekam': 'Slices of smoked pork loin on a plate with creamy orange rutabaga and carrot mash.',
+  'svineknoke': 'Boiled pork knuckle with sauerkraut made from white cabbage with caraway, boiled potatoes and mustard.',
+  'kyllinglar-sotpotet': 'Roasted chicken thigh fillets with sweet potato cubes, red bell pepper and red onion on a baking tray, bowl of tzatziki and lemon wedges.',
+  'kyllingklubber-soya': 'Sticky soy glazed chicken drumsticks in an ovenproof dish, white rice and cucumber slices on the side.',
+  'bacalao': 'Norwegian bacalao stew with salted cod pieces, sliced potatoes, red bell pepper and onion in tomato sauce with olive oil, in a wide pot.',
+  'gresskarsuppe': 'Smooth orange pumpkin soup with coconut milk and ginger in a bowl, swirl of coconut milk on top.',
 };
