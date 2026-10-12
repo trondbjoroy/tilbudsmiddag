@@ -54,8 +54,10 @@ function buildWeeks() {
     return { start: s, end: s + 7 * DAY_MS, from: Math.max(s, now), no: isoWeek(new Date(s)) };
   });
   weeks.forEach((w) => (w.count = DATA.offers.filter((o) => validIn(o, w)).length));
-  // Neste uke vises bare når kjedene har publisert avisene sine.
-  return weeks.filter((w, i) => i === 0 || w.count >= 50);
+  // Neste uke vises bare når kjedene har publisert avisene sine. Tilbud som varer flere uker
+  // teller ikke, bare de som starter søndagen før eller senere.
+  const fresh = DATA.offers.filter((o) => validIn(o, weeks[1]) && Date.parse(o.from) >= weeks[1].start - DAY_MS).length;
+  return weeks.filter((w, i) => i === 0 || fresh >= 50);
 }
 const validIn = (o, w) => Date.parse(o.from) < w.end && Date.parse(o.till) > w.from;
 
