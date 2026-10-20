@@ -76,4 +76,12 @@ export const PROMPTS = {
   'kyllingklubber-soya': 'Sticky soy glazed chicken drumsticks in an ovenproof dish, white rice and cucumber slices on the side.',
   'bacalao': 'Norwegian bacalao stew with salted cod pieces, sliced potatoes, red bell pepper and onion in tomato sauce with olive oil, in a wide pot.',
   'gresskarsuppe': 'Smooth orange pumpkin soup with coconut milk and ginger in a bowl, swirl of coconut milk on top.',
+  'hjortestek': 'Slices of pink roast venison on a plate with creamy brown game sauce with mushrooms, boiled potatoes and carrots.',
+  'karbonader-kalstuing': 'Pan fried Norwegian beef patties with creamy white cabbage in white sauce and boiled potatoes on a plate.',
+  'fiskeburger-coleslaw': 'Golden fish burger in a soft bun with creamy coleslaw of cabbage and carrot, crispy potato wedges on the side.',
+  'pulled-pork-burritobolle': 'Burrito bowl with pulled pork, white rice, black beans, sweet corn, diced tomato, avocado and red onion, dollop of sour cream and coriander.',
+  'lammelar-ovn': 'Roast leg of lamb with golden crust, garlic and rosemary on a roasting tray with roasted potatoes and root vegetables.',
+  'sei-tomat-paprika': 'Baked white pollock fillets on roasted red bell pepper, tomato and onion in an ovenproof dish, lemon wedges, white rice on the side.',
+  'fylt-paprika': 'Oven baked bell pepper halves stuffed with ground pork, rice and tomato, topped with melted golden cheese, green salad beside.',
+  'linsebolognese': 'Spaghetti with thick red lentil bolognese sauce with tomato and grated carrot in a bowl.',
 };

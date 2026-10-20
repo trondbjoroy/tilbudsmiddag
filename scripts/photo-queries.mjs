@@ -73,4 +73,12 @@ export const QUERIES = {
   'kyllingklubber-soya': { pexels: 'soy glazed chicken drumsticks rice' },
   'bacalao': { pexels: 'bacalao cod stew tomato potatoes' },
   'gresskarsuppe': { pexels: 'pumpkin soup' },
+  'hjortestek': { pexels: 'venison roast gravy potatoes' },
+  'karbonader-kalstuing': { pexels: 'beef patties creamed cabbage potatoes' },
+  'fiskeburger-coleslaw': { pexels: 'fish burger coleslaw potato wedges' },
+  'pulled-pork-burritobolle': { pexels: 'pulled pork burrito bowl' },
+  'lammelar-ovn': { pexels: 'roast leg of lamb garlic rosemary' },
+  'sei-tomat-paprika': { pexels: 'baked white fish tomato bell pepper rice' },
+  'fylt-paprika': { pexels: 'stuffed bell peppers ground meat rice' },
+  'linsebolognese': { pexels: 'lentil bolognese spaghetti' },
 };

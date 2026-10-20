@@ -381,4 +381,44 @@ export const RECIPES = [
     ing: [['gresskar', 1.2, 'kg'], ['lok', 1, 'stk'], ['gulrot', 2, 'stk'], ['hvitlok', 2, 'fedd'], ['ingefaer', 1, 'ss', 'revet'], ['kokosmelk', 1, 'boks'], ['buljong', 1, 'terning', 'grønnsaksbuljong'], ['vann', 7, 'dl'], ['olje', 1, 'ss'], ['salt', null, '']],
     steps: ['Skrell gresskaret, fjern kjernene og skjær det i terninger.', 'Stek hakket løk, gulrot, hvitløk og ingefær i olje i 3 minutter.', 'Tilsett gresskar, vann og buljong. Småkok i 20 minutter, til alt er mørt.', 'Hell i kokosmelken og kjør suppen jevn med en stavmikser.', 'Smak til med salt og server.'],
   },
+  {
+    id: 'hjortestek', name: 'Hjortestek med viltsaus og poteter', cat: 'storfe', time: 150, tags: ['helg'],
+    ing: [['hjort', 1.2, 'kg', 'lårstek, surret'], ['poteter', 1, 'kg'], ['gulrot', 4, 'stk'], ['champignon', 200, 'g'], ['flote', 3, 'dl'], ['buljong', 1, 'terning', 'viltbuljong'], ['vann', 3, 'dl'], ['mel', 2, 'ss'], ['smor', 2, 'ss'], ['krydder', 1, 'ts', 'knuste einebær og timian'], ['salt', null, ''], ['pepper', null, '']],
+    steps: ['Tin steken i kjøleskapet i to døgn. Sett ovnen på 140 °C.', 'Gni steken med salt, pepper og krydder. Brun den godt i smør i en panne.', 'Legg steken i en ildfast form og stek i cirka 1,5 time, til kjernetemperaturen er 58 °C.', 'Kok poteter og gulrøtter. Stek soppen i samme panne som kjøttet.', 'Strø mel over soppen. Rør inn vann, buljong og fløte og kok sausen i 10 minutter.', 'La steken hvile i 10 minutter. Skjær den i tynne skiver og server med saus, poteter og gulrøtter.'],
+  },
+  {
+    id: 'karbonader-kalstuing', name: 'Karbonader med kålstuing og poteter', cat: 'storfe', time: 30, tags: ['barn'],
+    ing: [['karbonader', 600, 'g'], ['kal', 600, 'g', 'spisskål eller hodekål'], ['poteter', 1, 'kg'], ['melk', 4, 'dl'], ['mel', 2, 'ss'], ['smor', 3, 'ss'], ['krydder', null, '', 'muskat'], ['salt', null, ''], ['pepper', null, '']],
+    steps: ['Kok potetene.', 'Skjær kålen i biter og kok den i lettsaltet vann i 5 minutter. Hell av vannet.', 'Smelt 2 ss smør og rør inn melet. Spe med melk og kok sausen i 3 minutter.', 'Vend kålen i sausen. Smak til med salt, pepper og muskat.', 'Stek karbonadene i resten av smøret, 3–4 minutter på hver side. Server med kålstuing og poteter.'],
+  },
+  {
+    id: 'fiskeburger-coleslaw', name: 'Fiskeburger med coleslaw og potetbåter', cat: 'fisk', time: 40, tags: ['barn', 'fredag'],
+    ing: [['fiskekaker', 8, 'stk', 'fiskeburgere'], ['hamburgerbrod', 4, 'stk'], ['poteter', 1, 'kg'], ['kal', 300, 'g'], ['gulrot', 2, 'stk'], ['majones', 1, 'dl'], ['romme', 1, 'dl'], ['olje', 3, 'ss'], ['salt', null, ''], ['pepper', null, '']],
+    steps: ['Sett ovnen på 220 °C.', 'Skjær potetene i båter. Vend dem i 2 ss olje og salt, og stek i 30 minutter.', 'Strimle kålen og riv gulrøttene. Bland med majones og rømme, og smak til med salt og pepper.', 'Stek fiskeburgerne i resten av oljen, 3–4 minutter på hver side.', 'Varm brødene. Fyll dem med fiskeburger og coleslaw, og server med potetbåtene.'],
+  },
+  {
+    id: 'pulled-pork-burritobolle', name: 'Burritobolle med pulled pork', cat: 'svin', time: 25, tags: ['barn'],
+    ing: [['pulledpork', 500, 'g'], ['ris', 3, 'dl'], ['bonner', 1, 'boks', 'svarte bønner'], ['mais', 1, 'boks'], ['tomater', 2, 'stk'], ['avokado', 2, 'stk'], ['rodlok', 1, 'stk'], ['romme', 2, 'dl'], ['sitron', 1, 'stk', 'eller lime'], ['koriander', null, '', 'til servering']],
+    steps: ['Kok risen.', 'Varm kjøttet etter anvisningen på pakken.', 'Skyll bønner og mais i kaldt vann.', 'Skjær tomater, avokado og rødløk i små biter. Press over litt sitron.', 'Fordel ris i boller. Legg på kjøtt, bønner, mais og grønnsaker, og server med rømme og koriander.'],
+  },
+  {
+    id: 'lammelar-ovn', name: 'Lammelår i ovn med hvitløk og rosmarin', cat: 'lam', time: 150, tags: ['helg', 'glutenfri', 'laktosefri'],
+    ing: [['lammelar', 1.8, 'kg', 'med ben'], ['poteter', 1, 'kg'], ['rotgronnsaker', 600, 'g'], ['hvitlok', 6, 'fedd'], ['olivenolje', 3, 'ss'], ['krydder', 2, 'ss', 'rosmarin'], ['salt', null, ''], ['pepper', null, '']],
+    steps: ['Tin låret i kjøleskapet i to døgn hvis det er fryst. Sett ovnen på 160 °C.', 'Stikk små hull i kjøttet og stikk inn biter av hvitløk.', 'Gni låret med olje, rosmarin, salt og pepper. Legg det i en langpanne.', 'Del poteter og rotgrønnsaker i biter og legg dem rundt kjøttet.', 'Stek i cirka 1 time og 45 minutter, til kjernetemperaturen er 62 °C.', 'La kjøttet hvile i 15 minutter. Skjær det i skiver og server med grønnsakene.'],
+  },
+  {
+    id: 'sei-tomat-paprika', name: 'Ovnsbakt sei med paprika, tomat og ris', cat: 'fisk', time: 30, tags: ['glutenfri', 'laktosefri'],
+    ing: [['sei', 600, 'g'], ['paprika', 2, 'stk'], ['tomater', 4, 'stk'], ['lok', 1, 'stk'], ['hvitlok', 2, 'fedd'], ['ris', 3, 'dl'], ['sitron', 1, 'stk'], ['olivenolje', 3, 'ss'], ['krydder', 1, 'ts', 'oregano'], ['salt', null, ''], ['pepper', null, '']],
+    steps: ['Sett ovnen på 200 °C. Kok risen.', 'Skjær paprika, tomater og løk i biter. Hakk hvitløken.', 'Legg grønnsakene i en ildfast form. Vend dem i olje, oregano og salt, og stek i 10 minutter.', 'Legg fisken oppå grønnsakene. Krydre med salt og pepper.', 'Stek i 12–15 minutter, til fisken flaker seg. Press over sitron og server med ris.'],
+  },
+  {
+    id: 'fylt-paprika', name: 'Fylte paprika med svinekjøttdeig og ris', cat: 'svin', time: 55, tags: ['barn', 'glutenfri'],
+    ing: [['svinekjottdeig', 400, 'g'], ['paprika', 4, 'stk'], ['ris', 1.5, 'dl'], ['lok', 1, 'stk'], ['hakkedetomater', 1, 'boks'], ['hvitlok', 2, 'fedd'], ['revetost', 100, 'g'], ['salat', null, '', 'til servering'], ['krydder', 1, 'ts', 'paprikapulver'], ['olje', 1, 'ss'], ['salt', null, ''], ['pepper', null, '']],
+    steps: ['Sett ovnen på 200 °C. Kok risen.', 'Brun kjøttdeigen i olje med hakket løk og hvitløk.', 'Rør inn tomatene, krydder og risen. Smak til med salt og pepper.', 'Del paprikaene på langs og fjern kjernene. Fyll dem med kjøttblandingen.', 'Strø over ost og stek i 25 minutter. Server med salat.'],
+  },
+  {
+    id: 'linsebolognese', name: 'Linsebolognese med spaghetti', cat: 'vegetar', time: 35, tags: ['barn', 'laktosefri'],
+    ing: [['linser', 2, 'dl', 'eller 2 bokser kokte linser'], ['pasta', 400, 'g', 'spaghetti'], ['hakkedetomater', 2, 'bokser'], ['lok', 1, 'stk'], ['gulrot', 2, 'stk'], ['hvitlok', 2, 'fedd'], ['tomatpure', 2, 'ss'], ['buljong', 1, 'terning', 'grønnsaksbuljong'], ['vann', 3, 'dl'], ['olivenolje', 2, 'ss'], ['krydder', 1, 'ts', 'oregano'], ['salt', null, ''], ['pepper', null, '']],
+    steps: ['Hakk løk og hvitløk. Riv gulrøttene.', 'Stek løk, hvitløk og gulrot i olje i 5 minutter.', 'Rør inn tomatpuré, linser, tomater, vann, buljong og oregano.', 'Småkok i 20 minutter, til linsene er møre. Smak til med salt og pepper.', 'Kok pastaen og server med sausen.'],
+  },
 ];

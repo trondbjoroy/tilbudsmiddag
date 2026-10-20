@@ -37,6 +37,9 @@ export const INGREDIENTS = {
   svinekam: { name: 'Svinekam', w: 3, match: re('svinekam') },
   svineknoke: { name: 'Svineknoke', w: 3, match: re('svineknoke') },
 
+  // Vilt
+  hjort: { name: 'Hjortestek', w: 3, match: re('hjort'), not: re('pølse|salami|pålegg|skivet|burger|kjøttdeig|karbonade') },
+
   // Lam
   farikalkjott: { name: 'Fårikålkjøtt', w: 3, match: re('fårikål'), not: re('poteter') },
   lammelar: { name: 'Lammelår/lammestek', w: 3, match: re('lammelår|lammebog|lammestek|lammeskank'), not: re('frikass') },
