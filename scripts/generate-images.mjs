@@ -29,6 +29,7 @@ async function generate(prompt, seed) {
 
 await mkdir(DIR, { recursive: true });
 const only = process.argv.slice(2);
+const failed = [];
 for (const r of RECIPES) {
   if (only.length && !only.includes(r.id)) continue;
   const file = new URL(`${slugify(r.name)}.webp`, DIR);
@@ -41,9 +42,13 @@ for (const r of RECIPES) {
       break;
     } catch (err) {
       console.log('feil', r.id, attempt, String(err.message).slice(0, 200));
-      if (attempt >= 3) throw err;
+      if (attempt >= 3) { failed.push(r.id); break; } // Prøv neste oppskrift.
       await new Promise((res) => setTimeout(res, 20000 * attempt));
     }
   }
 }
 console.log('ferdig');
+if (failed.length) {
+  console.log('mangler fortsatt:', failed.join(', '));
+  process.exitCode = 1;
+}
