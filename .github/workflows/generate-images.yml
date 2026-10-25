@@ -1,0 +1,36 @@
+name: Lag bilder
+
+# Lager bilder for nye oppskrifter. Oppskriftsrutinen kjører søndag 17:30 UTC.
+# Mandag prøver vi igjen hvis gratiskvoten hos Hugging Face var brukt opp.
+on:
+  schedule:
+    - cron: '30 19 * * 0'
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Skriptet hopper over bilder som finnes. Bilder som blir laget, lagres selv om ett feiler.
+      - run: node scripts/generate-images.mjs
+        continue-on-error: true
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      - run: node scripts/build-pages.mjs # sidene får bilde og oppskriftsdata
+      - name: Commit nye bilder
+        run: |
+          git config user.name "tilbudsmiddag-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m "Nye bilder $(date -u +%F)"
+          git pull --rebase
+          git push
