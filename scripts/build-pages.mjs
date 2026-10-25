@@ -198,7 +198,8 @@ function recipePage(r) {
       </div>
     </article>
     ${related.length ? `<section class="related"><h2>Flere oppskrifter: ${esc(CATS[r.cat].toLowerCase())}</h2><div class="rcards">${related.map(recipeCard).join('')}</div></section>` : ''}`;
-  return page({ title: `${r.name} – oppskrift | Tilbudsmiddag`, description, path, body, head: jsonLd(ld) + jsonLd(crumbLd(trail)), ...(img(r) ? { image: img(r) } : {}) });
+  // Google krever bilde i Recipe-data, så sider uten bilde får bare brødsmuler.
+  return page({ title: `${r.name} – oppskrift | Tilbudsmiddag`, description, path, body, head: (img(r) ? jsonLd(ld) : '') + jsonLd(crumbLd(trail)), ...(img(r) ? { image: img(r) } : {}) });
 }
 
 function byCategory() {
