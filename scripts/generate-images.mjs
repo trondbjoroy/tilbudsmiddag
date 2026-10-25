@@ -28,6 +28,7 @@ async function generate(prompt, seed) {
 }
 
 await mkdir(DIR, { recursive: true });
+console.log(process.env.HF_TOKEN ? 'Bruker HF_TOKEN.' : 'Uten HF_TOKEN: bruker den lille gratiskvoten uten innlogging.');
 const only = process.argv.slice(2);
 const failed = [];
 for (const r of RECIPES) {
