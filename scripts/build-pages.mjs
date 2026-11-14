@@ -98,11 +98,11 @@ function page({ title, description, path, body, head = '', noindex = false, imag
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:image" content="${SITE}${image}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#c8442b">
+  <meta name="theme-color" content="#262c2e">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/theme.js"></script>
   <script src="/assets/analytics.js"></script>

@@ -1,21 +1,25 @@
 <!doctype html>
 <html lang="nb"><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&display=block" rel="stylesheet">
+<!-- Delingsbilde (assets/og.png). Lag på nytt med headless Edge:
+     msedge --headless --screenshot=assets/og.png --window-size=1200,630 scripts/og.html -->
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&display=block" rel="stylesheet">
 <style>
   html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
-  body { background: #faf6f0; font-family: "Segoe UI", system-ui, sans-serif; color: #1f1b16; display: flex; flex-direction: column; justify-content: center; padding: 0 90px; box-sizing: border-box; position: relative; }
-  .bar { position: absolute; inset: 0 0 auto 0; height: 14px; background: linear-gradient(90deg, #d99a1e, #a8432c, #d0647a, #7a5aa8, #2f74b5, #3f8f4c); }
-  .logo { display: flex; align-items: center; gap: 18px; font: 700 44px Fraunces, Georgia, serif; }
-  .mark { width: 64px; height: 64px; border-radius: 16px; background: #c8442b url("../assets/favicon.svg") center/cover; }
-  h1 { font: 700 84px/1.05 Fraunces, Georgia, serif; margin: 34px 0 22px; letter-spacing: -0.02em; }
-  p { font-size: 32px; color: #6f665c; margin: 0; max-width: 900px; line-height: 1.35; }
-  .chips { display: flex; gap: 12px; margin-top: 36px; }
-  .chips span { font-size: 24px; padding: 8px 18px; border-radius: 999px; background: #fff; border: 2px solid #e6ddd0; }
+  body { background: #eceeee; font-family: "Segoe UI", system-ui, sans-serif; color: #111416; position: relative; }
+  .rail { height: 104px; background: #262c2e; color: #f4f6f6; display: flex; align-items: center; gap: 16px; padding: 0 84px; font: 800 44px Archivo, sans-serif; font-stretch: 75%; letter-spacing: -0.01em; }
+  .rail img { width: 58px; height: 58px; }
+  main { padding: 56px 84px 0; width: 760px; }
+  h1 { font: 800 104px/0.98 Archivo, sans-serif; font-stretch: 75%; letter-spacing: -0.015em; word-spacing: 0.08em; margin: 0 0 26px; }
+  p { font-size: 30px; line-height: 1.35; color: #3c4447; margin: 0; }
+  .tag { position: absolute; right: 70px; top: 190px; width: 330px; height: 330px; }
+  .shelf { position: absolute; left: 0; right: 0; bottom: 0; height: 22px; background: #262c2e; }
 </style></head>
 <body>
-  <div class="bar"></div>
-  <div class="logo"><span class="mark"></span>tilbudsmiddag.no</div>
-  <h1>Middager fra ukens tilbud</h1>
-  <p>Middagstips for hver dag, med oppskrift og handleliste som viser hvor varene er billigst.</p>
-  <div class="chips"><span>REMA 1000</span><span>KIWI</span><span>Extra</span><span>MENY</span><span>SPAR</span><span>Coop</span></div>
+  <div class="rail"><img src="../assets/favicon.svg" alt="">tilbudsmiddag.no</div>
+  <main>
+    <h1>Middager fra ukens tilbud</h1>
+    <p>Middag for hver dag, med oppskrift og handleliste som viser hvilken butikk som har varen billigst.</p>
+  </main>
+  <img class="tag" src="../assets/favicon.svg" alt="">
+  <div class="shelf"></div>
 </body></html>

@@ -1,0 +1,13 @@
+{
+  "world": "hyllekant",
+  "shadows": {
+    "card": "0 1px 1px rgb(17 20 22 / 6%), 0 3px 10px rgb(17 20 22 / 7%)",
+    "card-hover": "0 2px 2px rgb(17 20 22 / 6%), 0 10px 24px rgb(17 20 22 / 12%)",
+    "dialog": "0 20px 60px rgb(0 0 0 / 30%)"
+  },
+  "motion": {
+    "card-lift": { "property": "transform, box-shadow", "duration": "200ms", "easing": "cubic-bezier(.16, 1, .3, 1)", "distance": "-2px" }
+  },
+  "focus": { "outline": "3px solid #ffe14d", "outlineOffset": "2px", "ring": "0 0 0 5px #111416" },
+  "fontSource": "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&display=swap"
+}
