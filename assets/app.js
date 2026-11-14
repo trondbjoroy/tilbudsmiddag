@@ -397,11 +397,55 @@ function shoppingText(e) {
   return lines.join('\n');
 }
 
+// ---------- Prissøk ----------
+// Ord som ikke beskriver varen, f.eks. i «finn butikken med billigst hvetemel».
+const FILLER = new Set(['finn', 'butikken', 'butikk', 'med', 'billigst', 'billigste', 'hvor', 'er', 'pris', 'på', 'den', 'det']);
+
+// Pris per kg, liter eller stk. null når avisen ikke oppgir mengde.
+function unitPrice(o) {
+  if (isPerKg(o)) return { value: o.price, unit: 'kg' };
+  const f = { g: [1000, 'kg'], kg: [1, 'kg'], ml: [1000, 'l'], dl: [10, 'l'], l: [1, 'l'] }[o.unit];
+  if (f && o.size) return { value: (o.price * f[0]) / o.size, unit: f[1] };
+  if (o.unit === 'pcs' && o.size > 1) return { value: o.price / o.size, unit: 'stk' };
+  return null;
+}
+
+function renderPriceSearch() {
+  const words = $('#ps-q').value.toLowerCase().split(/\s+/).filter((w) => w && !FILLER.has(w));
+  if (!words.length) return ($('#ps-results').innerHTML = '');
+  // Hvert ord må starte et ord i varenavnet. Ord på fire bokstaver eller mer kan også avslutte et
+  // sammensatt ord («vinterkaffe»). Korte ord kan ikke det, så «egg» gir ikke treff på «pålegg».
+  const res = words.map((w) => {
+    const s = w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return new RegExp(`(^|[^a-zæøå])${s}` + (w.length >= 4 ? `|${s}($|[^a-zæøå])` : ''), 'i');
+  });
+  const w = WEEKS[state.week] || WEEKS[0];
+  const seen = new Set();
+  const hits = DATA.offers
+    .filter((o) => validIn(o, w) && res.every((re) => re.test(o.heading)))
+    .filter((o) => !seen.has(`${o.chain}|${o.heading}|${o.price}`) && seen.add(`${o.chain}|${o.heading}|${o.price}`))
+    .map((o) => ({ ...o, up: unitPrice(o) }));
+  // Kilo- og literpris kan sammenlignes. Varer uten mengde kommer sist, sortert på pris.
+  const rank = (o) => (o.up && o.up.unit !== 'stk' ? 0 : 1);
+  hits.sort((a, b) => rank(a) - rank(b) || (rank(a) ? a.price - b.price : a.up.value - b.up.value));
+  if (!hits.length) {
+    $('#ps-results').innerHTML = `<p class="muted">Ingen tilbud på «${esc(words.join(' '))}» denne uken. Vi har bare prisene fra tilbudsavisene.</p>`;
+    return;
+  }
+  const upText = (o) => (o.up ? ` <span class="muted">(${kr(Math.round(o.up.value * 100) / 100)}/${o.up.unit})</span>` : '');
+  const best = hits[0];
+  $('#ps-results').innerHTML = `
+    <p class="ps-best">Billigst: ${chainBadge(best.chain)} <b>${esc(best.heading)}</b> til ${kr(best.price)}${upText(best)}</p>
+    <ul class="ps-list">${hits.slice(0, 12).map((o) => `<li>${chainBadge(o.chain)} <span><b>${priceLabel(o)}</b>${upText(o)} · ${esc(o.heading)}${o.description ? ` <span class="muted">– ${esc(o.description)}</span>` : ''} <span class="muted">· t.o.m. ${shortDate(o.till)}</span></span></li>`).join('')}</ul>
+    ${hits.length > 12 ? `<p class="muted">Viser 12 av ${hits.length} treff. Skriv mer for å snevre inn søket.</p>` : ''}`;
+}
+
 // ---------- Hendelser ----------
 function update() {
   saveState();
   renderControls();
   renderPlan();
+  renderPriceSearch();
 }
 
 function onClick(ev) {
@@ -447,6 +491,8 @@ async function init() {
     state.q = ev.target.value.trim();
     update();
   });
+  $('#ps-q').addEventListener('input', () => DATA && renderPriceSearch());
+  $('#ps-q').addEventListener('change', (ev) => ev.target.value.trim() && window.posthog?.capture('price_searched', { query: ev.target.value.trim().toLowerCase() }));
   $('#dlg').addEventListener('click', (ev) => {
     if (ev.target === $('#dlg')) $('#dlg').close();
   });

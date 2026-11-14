@@ -60,7 +60,7 @@ a { color: inherit; }
 .theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .theme-toggle .i-sun, .theme-toggle[data-mode="dark"] .i-moon { display: none; }
 .theme-toggle[data-mode="dark"] .i-sun { display: block; }
-@media (max-width: 560px) { .nav a { font-size: 0.85rem; padding: 6px 10px; } .logo { font-size: 1.2rem; } }
+@media (max-width: 560px) { .nav a { font-size: 0.85rem; padding: 6px 7px; } .logo { font-size: 1.1rem; gap: 8px; } .nav { gap: 0; } }
 
 /* Intro */
 .intro { padding: 28px 0 8px; }
@@ -162,6 +162,13 @@ a { color: inherit; }
 .empty { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; text-align: center; }
 
 /* Aviser */
+.price-search { padding: 10px 0 32px; border-top: 1px solid var(--line); }
+.price-search h2 { margin: 24px 0 4px; }
+#ps-q { width: 100%; max-width: 480px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; background: var(--bg); color: var(--ink); }
+.ps-best { margin: 16px 0 8px; font-size: 1.05rem; }
+.ps-list { list-style: none; margin: 0; padding: 0; }
+.ps-list li { display: flex; gap: 10px; align-items: baseline; padding: 8px 0; border-top: 1px solid var(--line); }
+.ps-list li > :first-child { flex: 0 0 96px; }
 .flyers-section { padding: 10px 0 40px; border-top: 1px solid var(--line); }
 .flyers-section h2 { margin: 24px 0 4px; }
 .flyers { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; margin: 16px 0; }

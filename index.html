@@ -42,6 +42,7 @@
       <nav class="nav" aria-label="Hovedmeny">
         <a href="#ukemeny" class="hide-xs">Ukemeny</a>
         <a href="/oppskrifter/">Oppskrifter</a>
+        <a href="#prissok">Prissøk</a>
         <a href="#aviser" class="hide-xs">Tilbudsaviser</a>
         <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Bytt fargemodus">
           <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
@@ -86,6 +87,14 @@
         <p class="muted">Henter ukens tilbud …</p>
       </div>
     </div>
+
+    <section class="price-search" id="prissok">
+      <h2>Finn butikken med billigst vare</h2>
+      <p class="muted">Søk blant alle varene i ukens tilbudsaviser. Billigst pris per kilo eller liter kommer først.</p>
+      <label for="ps-q" class="f-label">Hva leter du etter?</label>
+      <input id="ps-q" type="search" placeholder="F.eks. hvetemel, kaffe, smør" autocomplete="off">
+      <div id="ps-results" aria-live="polite"></div>
+    </section>
 
     <section class="flyers-section" id="aviser">
       <h2>Ukens tilbudsaviser</h2>
